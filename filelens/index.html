@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>FileLens. — instant file inspector for Windows · RAZKOM</title>
+  <meta name="description" content="FileLens adds a right-click action to Explorer that pops up hashes, strings, hex, PE internals, and metadata for any file. Free and open source." />
+  <link rel="icon" type="image/x-icon" href="/assets/brands/filelens.ico" />
+  <link rel="canonical" href="https://razkom.com/filelens/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="FileLens — instant file inspector for Windows" />
+  <meta property="og:description" content="Right-click any file and get hashes, strings, hex, and PE internals in a popup." />
+  <meta property="og:url" content="https://razkom.com/filelens/" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="theme-filelens">
+  <header class="term-nav">
+    <div class="wrap">
+      <div class="term-nav-left">
+        <a href="/" class="term-brand" aria-label="RAZKOM home">
+          RAZKOM<span class="slash">/</span><span class="path">filelens</span>
+        </a>
+      </div>
+      <nav class="term-nav-links" aria-label="Primary">
+        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-hero app-hero--stack">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="kicker">$ ./filelens --info</p>
+          <div class="app-hero-title-row">
+            <img class="app-hero-mark" src="/assets/brands/filelens.ico" width="128" height="128" alt="" decoding="async" />
+            <h1 class="app-title">FileLens<span class="punct">.</span></h1>
+          </div>
+          <p class="app-subhead">Right-click any file in Windows Explorer and get hashes, strings, hex, PE internals, and metadata in a compact popup. Built for reverse engineers and the curious.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary"
+               href="https://github.com/RAZKOM/filelens/releases/latest"
+               target="_blank" rel="noopener">
+              Download for Windows
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="btn"
+               href="https://github.com/RAZKOM/filelens"
+               target="_blank" rel="noopener">
+              View source
+            </a>
+            <span class="cta-note">Windows 10 / 11</span>
+          </div>
+        </div>
+
+        <figure class="hero-mock hero-demo">
+          <video
+            src="/assets/filelens-demo-compressed.mp4"
+            width="1490"
+            height="1106"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Screen recording: right-click a file in Windows Explorer, choose Inspect with FileLens, then browse hashes, strings, and other tabs in the popup."></video>
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[01]</span>
+          <span class="sect-title">how it works</span>
+          <span class="sect-meta">// three steps</span>
+        </header>
+
+        <div class="prose">
+          <ol>
+            <li>Run <code>filelens.exe --register</code> once. It adds itself to your right-click menu.</li>
+            <li>Right-click any file in Explorer and pick <b>Inspect with FileLens</b>.</li>
+            <li>A popup opens at your cursor with tabs for everything relevant to that file. Click away to dismiss, or pin it to keep it open.</li>
+          </ol>
+          <p>To remove from the right-click menu later: <code>filelens.exe --unregister</code>. No installer, no admin rights, no service.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[02]</span>
+          <span class="sect-title">what it shows</span>
+          <span class="sect-meta">// smart tabs</span>
+        </header>
+
+        <div class="features">
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01"/><path d="M11 12h1v4h1"/></svg>
+            </span>
+            <h3>Info</h3>
+            <p>Size, timestamps, entropy score, magic bytes, type detection, and extension mismatch warnings.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h14"/><path d="M5 15h14"/><path d="M11 4l-4 16"/><path d="M17 4l-4 16"/></svg>
+            </span>
+            <h3>Hashes</h3>
+            <p>MD5, SHA-1, and SHA-256 computed in parallel. Full-width selectable fields with copy buttons.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M12 5v14"/><path d="M8 19h8"/></svg>
+            </span>
+            <h3>Strings</h3>
+            <p>Every printable ASCII and UTF-16 string. Live filter, sortable, with category pills for URLs, paths, IPs, registry keys, and emails.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1"/><path d="M9 3v3"/><path d="M15 3v3"/><path d="M9 18v3"/><path d="M15 18v3"/><path d="M3 9h3"/><path d="M3 15h3"/><path d="M18 9h3"/><path d="M18 15h3"/></svg>
+            </span>
+            <h3>PE</h3>
+            <p>For EXE / DLL files: section table with entropy and flags, imports grouped by DLL with function names, exports, and signing status.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </span>
+            <h3>Hex</h3>
+            <p>First 64 KB as a hex dump. Click any byte for details. Zero bytes are dimmed, ASCII sidebar on the right.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l8.5-8.5a2 2 0 0 1 1.4-.6h6.6a2 2 0 0 1 2 2v6.6a2 2 0 0 1-.6 1.4L12.5 21.5a2 2 0 0 1-2.8 0L3 14.8a2 2 0 0 1 0-2.8z"/><circle cx="16" cy="8" r="1.5"/></svg>
+            </span>
+            <h3>Meta</h3>
+            <p>PDF properties, Office doc metadata (DOCX / XLSX / PPTX), JPEG EXIF, PNG chunk data. Only shows for supported formats.</p>
+          </div>
+
+        </div>
+
+        <p style="margin-top: 28px; color: var(--ink-3); font-size: 14px; font-style: italic;">
+          Tabs are smart. You only see what is relevant to the file you are looking at.
+        </p>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[03]</span>
+          <span class="sect-title">spec sheet</span>
+          <span class="sect-meta">// the details</span>
+        </header>
+
+        <div class="spec-card">
+          <dl>
+            <div class="spec-row"><dt>platform</dt><span class="leader"></span><dd>Windows 10 and 11, x64</dd></div>
+            <div class="spec-row"><dt>size</dt><span class="leader"></span><dd>~5 MB</dd></div>
+            <div class="spec-row"><dt>stack</dt><span class="leader"></span><dd>Rust + egui</dd></div>
+            <div class="spec-row"><dt>install</dt><span class="leader"></span><dd>Unzip, run with --register</dd></div>
+            <div class="spec-row"><dt>license</dt><span class="leader"></span><dd>MIT</dd></div>
+            <div class="spec-row"><dt>source</dt><span class="leader"></span><dd>github.com/RAZKOM/filelens</dd></div>
+            <div class="spec-row"><dt>admin needed</dt><span class="leader"></span><dd>No</dd></div>
+            <div class="spec-row"><dt>cost</dt><span class="leader"></span><dd>Free</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="term-footer">
+    <div class="wrap">
+      <div class="left">
+        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
+        <span>echo "&copy; 2026 RAZKOM"</span>
+      </div>
+      <div class="right">
+        <a href="/">razkom.com</a>
+        <span class="sep">//</span>
+        <a href="https://github.com/RAZKOM/filelens" target="_blank" rel="noopener">github.com/RAZKOM/filelens</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

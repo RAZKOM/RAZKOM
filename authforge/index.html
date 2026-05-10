@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>AuthForge. — software licensing API · RAZKOM</title>
+  <meta name="description" content="AuthForge is a credit-based software licensing API. Validate license keys with hardware binding, heartbeats, and Ed25519-signed responses." />
+  <link rel="icon" type="image/svg+xml" href="/assets/brands/authforge.svg" />
+  <link rel="canonical" href="https://razkom.com/authforge/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AuthForge — software licensing API" />
+  <meta property="og:description" content="Issue keys, bind to hardware, validate sessions, sign responses with Ed25519." />
+  <meta property="og:url" content="https://razkom.com/authforge/" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="theme-authforge">
+  <header class="term-nav">
+    <div class="wrap">
+      <div class="term-nav-left">
+        <a href="/" class="term-brand" aria-label="RAZKOM home">
+          RAZKOM<span class="slash">/</span><span class="path">authforge</span>
+        </a>
+      </div>
+      <nav class="term-nav-links" aria-label="Primary">
+        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-hero">
+      <div class="wrap">
+        <div class="grid">
+
+          <div class="hero-copy">
+            <p class="kicker">$ ./authforge --info</p>
+            <div class="app-hero-title-row">
+              <img class="app-hero-mark" src="/assets/brands/authforge.svg" width="108" height="108" alt="" decoding="async" />
+              <h1 class="app-title">AuthForge<span class="punct">.</span></h1>
+            </div>
+            <p class="app-subhead">Issue keys, bind them to hardware, run heartbeats, and sign every response with Ed25519. Built so you can stop writing your own licensing layer.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary"
+                 href="https://authforge.cc"
+                 target="_blank" rel="noopener">
+                Visit authforge.cc
+                <span class="arrow">&rarr;</span>
+              </a>
+              <a class="btn"
+                 href="https://docs.authforge.cc"
+                 target="_blank" rel="noopener">
+                Read the docs
+              </a>
+              <span class="cta-note">pay-as-you-go credits, no monthly minimum</span>
+            </div>
+          </div>
+
+          <div class="hero-mock">
+            <section class="af-license-popup" aria-label="Example in-app activation dialog">
+              <div class="af-license-popup-head">
+                <span class="af-license-popup-title">Activate Your License</span>
+                <span class="af-license-popup-chip">In-app popup example</span>
+              </div>
+              <div class="af-license-popup-body">
+                <p class="af-license-popup-lead">
+                  Exactly what your users see: paste a key, validate against AuthForge, and lock the license to this device.
+                  <a href="https://docs.authforge.cc/api/licenses" target="_blank" rel="noopener noreferrer">License API reference</a>
+                </p>
+                <div class="af-license-field">
+                  <label class="af-license-label" for="af-license-input">License Key</label>
+                  <div class="af-license-input-shell">
+                    <span class="af-license-input-prefix" aria-hidden="true">Key</span>
+                    <input id="af-license-input" type="text" class="af-license-input" autocomplete="off" spellcheck="false" />
+                  </div>
+                </div>
+                <div class="af-license-actions">
+                  <button type="button" class="btn btn-primary af-license-btn-grow" id="af-license-validate">Validate &amp; Activate</button>
+                  <button type="button" class="btn af-license-btn-muted" id="af-license-buy">Buy a License Key</button>
+                </div>
+                <div class="af-license-status" id="af-license-status" hidden>
+                  <div class="af-license-status-badge" id="af-license-status-badge"></div>
+                  <div class="af-license-status-content" id="af-license-status-content">
+                    <p class="af-license-status-msg" id="af-license-status-msg"></p>
+                    <a href="https://authforge.cc/#pricing" class="af-license-status-extra" id="af-license-checkout-link" target="_blank" rel="noopener noreferrer">See AuthForge pricing</a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[01]</span>
+          <span class="sect-title">what you get</span>
+          <span class="sect-meta">// v1, production</span>
+        </header>
+
+        <div class="features">
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a7 7 0 0 1 14 0v3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M5 15a7 7 0 0 0 14 0"/><path d="M5 19a7 7 0 0 0 14 0"/></svg>
+            </span>
+            <h3>Hardware binding</h3>
+            <p>Lock keys to a stable HWID. Configurable slot count per license, with a clear path to migrate users to a new machine.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <h3>Signed payloads</h3>
+            <p>Every successful validation comes back with an Ed25519 signature you verify offline with a fixed public key. The server can lie, the math cannot.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+            </span>
+            <h3>Heartbeats</h3>
+            <p>Long sessions stay valid through periodic, lightweight check-ins. Revoke a key on the dashboard and active sessions die on the next heartbeat.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-5 3 5 3"/><path d="M16 9l5 3-5 3"/><path d="M14 4l-4 16"/></svg>
+            </span>
+            <h3>SDKs in six languages</h3>
+            <p>Python, C#, C++, Rust, Go, and Node.js. Each one ships with an AGENTS.md so coding agents can wire it up correctly the first time.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17a3 3 0 1 0 3 3"/><path d="M19 17a3 3 0 1 0-3 3"/><path d="M12 4a3 3 0 1 0 3 3"/><path d="M8 20l3-7"/><path d="M16 20l-3-7"/><path d="M12 7v6"/></svg>
+            </span>
+            <h3>Webhooks</h3>
+            <p>Hook your backend up to license events. Stripe and Lemon Squeezy guides included for the common flows.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h7l-1 7 9-11h-7z"/></svg>
+            </span>
+            <h3>Built for indie</h3>
+            <p>Credit-based pricing. No seat counts to true up. The same API that powers Tapt powers your stuff.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[02]</span>
+          <span class="sect-title">spec sheet</span>
+          <span class="sect-meta">// the details</span>
+        </header>
+
+        <p class="af-pkg-intro">Official SDK packages — live version from each registry.</p>
+
+        <div class="af-pkg-widgets" role="list">
+          <article class="af-pkg-widget" role="listitem">
+            <div class="af-pkg-widget-top">
+              <span class="af-pkg-widget-logo-wrap" aria-hidden="true" title="Node.js">
+                <img
+                  class="af-pkg-widget-logo"
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nodedotjs.svg"
+                  alt=""
+                  width="28"
+                  height="28"
+                  loading="lazy"
+                  decoding="async" />
+              </span>
+              <a class="af-pkg-widget-registry"
+                 href="https://www.npmjs.com/package/@authforgecc/sdk"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open @authforgecc/sdk on npm">
+                <img
+                  class="af-pkg-widget-badge"
+                  src="https://img.shields.io/npm/v/%40authforgecc%2Fsdk?style=flat-square&amp;logo=npm&amp;logoColor=white&amp;label=npm"
+                  alt="npm package @authforgecc/sdk version"
+                  height="20"
+                  loading="lazy"
+                  decoding="async" />
+              </a>
+            </div>
+            <div class="af-pkg-widget-cli">
+              <code class="af-pkg-widget-cmd" translate="no">npm install @authforgecc/sdk</code>
+              <button type="button" class="af-pkg-copy" data-copy="npm install @authforgecc/sdk" aria-label="Copy npm install command">Copy</button>
+            </div>
+          </article>
+
+          <article class="af-pkg-widget" role="listitem">
+            <div class="af-pkg-widget-top">
+              <span class="af-pkg-widget-logo-wrap" aria-hidden="true" title="Python">
+                <img
+                  class="af-pkg-widget-logo"
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/python.svg"
+                  alt=""
+                  width="28"
+                  height="28"
+                  loading="lazy"
+                  decoding="async" />
+              </span>
+              <a class="af-pkg-widget-registry"
+                 href="https://pypi.org/project/authforge-sdk/"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open authforge-sdk on PyPI">
+                <img
+                  class="af-pkg-widget-badge"
+                  src="https://img.shields.io/pypi/v/authforge-sdk?style=flat-square&amp;logo=pypi&amp;logoColor=white&amp;label=pip"
+                  alt="PyPI package authforge-sdk version"
+                  height="20"
+                  loading="lazy"
+                  decoding="async" />
+              </a>
+            </div>
+            <div class="af-pkg-widget-cli">
+              <code class="af-pkg-widget-cmd" translate="no">pip install authforge-sdk</code>
+              <button type="button" class="af-pkg-copy" data-copy="pip install authforge-sdk" aria-label="Copy pip install command">Copy</button>
+            </div>
+          </article>
+
+          <article class="af-pkg-widget" role="listitem">
+            <div class="af-pkg-widget-top">
+              <span class="af-pkg-widget-logo-wrap" aria-hidden="true" title="C# / .NET">
+                <img
+                  class="af-pkg-widget-logo"
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/dotnet.svg"
+                  alt=""
+                  width="28"
+                  height="28"
+                  loading="lazy"
+                  decoding="async" />
+              </span>
+              <a class="af-pkg-widget-registry"
+                 href="https://www.nuget.org/packages/AuthForge/"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open AuthForge on NuGet">
+                <img
+                  class="af-pkg-widget-badge"
+                  src="https://img.shields.io/nuget/v/AuthForge?style=flat-square&amp;logo=nuget&amp;logoColor=white&amp;label=nuget"
+                  alt="NuGet package AuthForge version"
+                  height="20"
+                  loading="lazy"
+                  decoding="async" />
+              </a>
+            </div>
+            <div class="af-pkg-widget-cli">
+              <code class="af-pkg-widget-cmd" translate="no">dotnet add package AuthForge</code>
+              <button type="button" class="af-pkg-copy" data-copy="dotnet add package AuthForge" aria-label="Copy dotnet add package command">Copy</button>
+            </div>
+          </article>
+
+          <article class="af-pkg-widget" role="listitem">
+            <div class="af-pkg-widget-top">
+              <span class="af-pkg-widget-logo-wrap" aria-hidden="true" title="Rust">
+                <img
+                  class="af-pkg-widget-logo"
+                  src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/rust.svg"
+                  alt=""
+                  width="28"
+                  height="28"
+                  loading="lazy"
+                  decoding="async" />
+              </span>
+              <a class="af-pkg-widget-registry"
+                 href="https://crates.io/crates/authforge"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Open authforge on crates.io">
+                <img
+                  class="af-pkg-widget-badge"
+                  src="https://img.shields.io/crates/v/authforge?style=flat-square&amp;logo=rust&amp;logoColor=white&amp;label=cargo"
+                  alt="crates.io crate authforge version"
+                  height="20"
+                  loading="lazy"
+                  decoding="async" />
+              </a>
+            </div>
+            <div class="af-pkg-widget-cli">
+              <code class="af-pkg-widget-cmd" translate="no">cargo add authforge</code>
+              <button type="button" class="af-pkg-copy" data-copy="cargo add authforge" aria-label="Copy cargo add command">Copy</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="spec-card">
+          <dl>
+            <div class="spec-row"><dt>type</dt><span class="leader"></span><dd>SaaS licensing API</dd></div>
+            <div class="spec-row"><dt>auth</dt><span class="leader"></span><dd>Bearer tokens (af_live_*)</dd></div>
+            <div class="spec-row"><dt>signing</dt><span class="leader"></span><dd>Ed25519 on payloads</dd></div>
+            <div class="spec-row"><dt>SDKs</dt><span class="leader"></span><dd>Python, C#, C++, Rust, Go, Node</dd></div>
+            <div class="spec-row"><dt>docs</dt><span class="leader"></span><dd>docs.authforge.cc</dd></div>
+            <div class="spec-row"><dt>status</dt><span class="leader"></span><dd>status.authforge.cc</dd></div>
+            <div class="spec-row"><dt>dashboard</dt><span class="leader"></span><dd>authforge.cc/auth</dd></div>
+            <div class="spec-row"><dt>pricing</dt><span class="leader"></span><dd>Credit-based, pay-as-you-go</dd></div>
+          </dl>
+        </div>
+
+        <p style="margin-top: 36px; color: var(--ink-3); font-size: 14px; font-style: italic;">
+          AuthForge has its own marketing site, dashboard, and full developer documentation. Everything technical lives at <a href="https://authforge.cc" style="color: var(--ink-2); font-style: normal;">authforge.cc</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="term-footer">
+    <div class="wrap">
+      <div class="left">
+        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
+        <span>echo "&copy; 2026 RAZKOM"</span>
+      </div>
+      <div class="right">
+        <a href="/">razkom.com</a>
+        <span class="sep">//</span>
+        <a href="https://authforge.cc" target="_blank" rel="noopener">authforge.cc</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    (function () {
+      var chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      function randomSegment() {
+        var s = "";
+        for (var i = 0; i < 4; i++) s += chars[Math.floor(Math.random() * chars.length)];
+        return s;
+      }
+      function randomSampleKey() {
+        return [randomSegment(), randomSegment(), randomSegment(), randomSegment()].join("-");
+      }
+
+      var input = document.getElementById("af-license-input");
+      var statusEl = document.getElementById("af-license-status");
+      var badgeEl = document.getElementById("af-license-status-badge");
+      var msgEl = document.getElementById("af-license-status-msg");
+      var contentEl = document.getElementById("af-license-status-content");
+      var checkoutLink = document.getElementById("af-license-checkout-link");
+
+      input.value = randomSampleKey();
+      var state = "idle";
+
+      function stripStatusClasses(el) {
+        el.classList.remove("af-license-status--valid", "af-license-status--invalid", "af-license-status--checkout");
+      }
+
+      function setState(next) {
+        state = next;
+        stripStatusClasses(statusEl);
+        checkoutLink.hidden = next !== "checkout";
+
+        if (next === "idle") {
+          statusEl.hidden = true;
+          return;
+        }
+
+        statusEl.hidden = false;
+
+        if (next === "valid") {
+          statusEl.classList.add("af-license-status--valid");
+          badgeEl.textContent = "VALID";
+          msgEl.textContent =
+            'Pro Tier key accepted. Device slot 1 of 3 is now active.';
+        } else if (next === "invalid") {
+          statusEl.classList.add("af-license-status--invalid");
+          badgeEl.textContent = "INVALID";
+          msgEl.textContent = "That key format is invalid. Try a key like XXXX-XXXX-XXXX-XXXX.";
+        } else {
+          statusEl.classList.add("af-license-status--checkout");
+          badgeEl.textContent = "CHECKOUT";
+          msgEl.textContent =
+            'The “Buy a License Key” button should send your users to your own checkout or license page.';
+        }
+
+        contentEl.classList.remove("af-license-status-pop");
+        void contentEl.offsetWidth;
+        contentEl.classList.add("af-license-status-pop");
+      }
+
+      document.getElementById("af-license-validate").addEventListener("click", function () {
+        var normalized = input.value.trim().toUpperCase();
+        input.value = normalized;
+        var looksValid = /^([A-Z0-9]{4}-){3}[A-Z0-9]{4}$/.test(normalized);
+        setState(looksValid ? "valid" : "invalid");
+      });
+
+      document.getElementById("af-license-buy").addEventListener("click", function () {
+        setState("checkout");
+      });
+
+      input.addEventListener("input", function () {
+        if (state !== "idle") setState("idle");
+      });
+    })();
+
+    (function () {
+      document.querySelectorAll(".af-pkg-copy").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var text = btn.getAttribute("data-copy");
+          if (!text) return;
+
+          function flashCopied() {
+            var prev = btn.textContent;
+            btn.textContent = "Copied";
+            btn.disabled = true;
+            window.setTimeout(function () {
+              btn.textContent = prev;
+              btn.disabled = false;
+            }, 1600);
+          }
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(flashCopied).catch(function () {});
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

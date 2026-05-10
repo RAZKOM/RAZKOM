@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>Tapt. — keyboard overlay for Windows · RAZKOM</title>
+  <meta name="description" content="Tapt is a live keyboard overlay for Windows. Show what you press on top of any app. One-time license, $2.99 for a month or $9.99 for lifetime." />
+  <link rel="icon" type="image/png" href="/assets/brands/tapt.png" />
+  <link rel="canonical" href="https://razkom.com/tapt/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tapt. — keyboard overlay for Windows" />
+  <meta property="og:description" content="A live keyboard overlay for Windows. One-time licenses, no subscription." />
+  <meta property="og:url" content="https://razkom.com/tapt/" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="theme-tapt">
+  <header class="term-nav">
+    <div class="wrap">
+      <div class="term-nav-left">
+        <a href="/" class="term-brand" aria-label="RAZKOM home">
+          RAZKOM<span class="slash">/</span><span class="path">tapt</span>
+        </a>
+      </div>
+      <nav class="term-nav-links" aria-label="Primary">
+        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-hero app-hero--stack">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="kicker">$ ./tapt --info</p>
+          <div class="app-hero-title-row">
+            <img class="app-hero-mark" src="/assets/brands/tapt.png" width="144" height="144" alt="" decoding="async" />
+            <h1 class="app-title">Tapt<span class="punct">.</span></h1>
+          </div>
+          <p class="app-subhead">Shows the keys you are pressing, live, on top of anything else on your screen. Built for streamers, screencasters, and tutorial makers.</p>
+          <div class="cta-row cta-row--stack">
+            <div class="cta-row-pair">
+              <a class="btn btn-primary"
+                 href="https://buy.stripe.com/8x23cxgIm2HmgiMf6be3e01"
+                 target="_blank" rel="noopener">
+                Buy lifetime &mdash; $9.99
+                <span class="arrow">&rarr;</span>
+              </a>
+              <a class="btn"
+                 href="https://buy.stripe.com/bJe28t3VAfu82rW1fle3e00"
+                 target="_blank" rel="noopener">
+                1 month &mdash; $2.99
+              </a>
+            </div>
+            <a class="btn btn-primary btn-cta-hero"
+               href="https://github.com/RAZKOM/Tapt./releases/download/v1.0.0/TaptSetup.exe"
+               target="_blank" rel="noopener">
+              Download now
+              <span class="arrow">&#8599;</span>
+            </a>
+            <span class="cta-note">Not a subscription &middot; free download, activates with your key</span>
+          </div>
+        </div>
+
+        <figure class="hero-mock hero-demo">
+          <video
+            src="/assets/tapt-demo-compressed.mp4"
+            width="1920"
+            height="1008"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Screen recording of the Tapt keyboard overlay on Windows"></video>
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[01]</span>
+          <span class="sect-title">two display modes</span>
+          <span class="sect-meta">// switch from the tray</span>
+        </header>
+
+        <div class="modes-grid">
+
+          <div class="mode-card">
+            <div class="mode-visual">
+              <div class="feed-mock" aria-hidden="true">
+                <span class="pill">tab</span>
+                <span class="pill">w</span>
+                <span class="pill">a</span>
+                <span class="pill">esc</span>
+                <span class="pill">space</span>
+              </div>
+            </div>
+            <div class="text">
+              <h3>Key feed</h3>
+              <p>Key chips in a horizontal row, fading for older presses. Lightweight, animated, always shows what you just typed.</p>
+            </div>
+          </div>
+
+          <div class="mode-card">
+            <div class="mode-visual mode-visual--kb">
+              <div class="kb-mock" aria-hidden="true">
+                <div class="kb-row">
+                  <span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
+                  <span class="kb-key kb-back"></span>
+                </div>
+                <div class="kb-row">
+                  <span class="kb-key kb-tab"></span>
+                  <span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
+                </div>
+                <div class="kb-row">
+                  <span class="kb-key kb-caps"></span>
+                  <span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
+                  <span class="kb-key kb-enter"></span>
+                </div>
+                <div class="kb-row">
+                  <span class="kb-key kb-shift-l"></span>
+                  <span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
+                  <span class="kb-key kb-shift-r"></span>
+                </div>
+                <div class="kb-row">
+                  <span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span>
+                  <span class="kb-key kb-space"></span>
+                  <span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span>
+                </div>
+              </div>
+            </div>
+            <div class="text">
+              <h3>Keyboard overlay</h3>
+              <p>An on-screen keyboard layout, lit up as you type. Switch modes any time from the tray.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[02]</span>
+          <span class="sect-title">features</span>
+          <span class="sect-meta">// v1, windows 10 / 11</span>
+        </header>
+
+        <div class="features">
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="8" height="12" rx="1.5"/><rect x="13" y="6" width="8" height="12" rx="1.5"/></svg>
+            </span>
+            <h3>Two display modes</h3>
+            <p>A horizontal key feed, or an on-screen keyboard layout. Switch any time from the tray.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 5-9 5-9-5z"/><path d="M3 14l9 5 9-5"/></svg>
+            </span>
+            <h3>Always on top</h3>
+            <p>The overlay is transparent, click-through, and stays above other windows. It does not show up in the taskbar.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M2 12a10 10 0 0 1 20 0"/></svg>
+            </span>
+            <h3>OBS friendly</h3>
+            <p>Visible to OBS and standard screen capture on Windows, so it shows up in your stream or recording.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/><circle cx="6.5" cy="6" r="0.5" fill="currentColor"/><circle cx="9" cy="6" r="0.5" fill="currentColor"/></svg>
+            </span>
+            <h3>Tray controlled</h3>
+            <p>Lives in the system tray. Right-click for settings, position, and to quit. No window to manage.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h6l-6 6h6"/><path d="M14 4h4l-4 4h4"/><path d="M14 14h6l-6 6h6"/></svg>
+            </span>
+            <h3>Quiet when idle</h3>
+            <p>The native overlay does almost nothing when you are not typing. No background animation loop burning your CPU.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="section" id="pricing" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[03]</span>
+          <span class="sect-title">pricing</span>
+          <span class="sect-meta">// licensed via authforge</span>
+        </header>
+
+        <div class="tier-grid">
+
+          <div class="tier">
+            <span class="tier-label">1 month</span>
+            <div class="tier-amount">$2.99 <span class="per">/ once (not a subscription)</span></div>
+            <ul>
+              <li>Single payment for 30 days of access</li>
+              <li>All features unlocked</li>
+              <li>One device per key</li> 
+            </ul>
+            <a class="btn"
+               href="https://buy.stripe.com/bJe28t3VAfu82rW1fle3e00"
+               target="_blank" rel="noopener">
+              Buy 1 month
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+
+          <div class="tier is-best">
+            <span class="tier-best-pill">// best value</span>
+            <span class="tier-label">lifetime</span>
+            <div class="tier-amount">$9.99 <span class="per">/ once</span></div>
+            <ul>
+              <li>Pay once, use forever</li>
+              <li>All features unlocked</li>
+              <li>Use on up to 3 devices on the same key at a time</li>
+            </ul>
+            <a class="btn btn-primary"
+               href="https://buy.stripe.com/8x23cxgIm2HmgiMf6be3e01"
+               target="_blank" rel="noopener">
+              Buy lifetime
+              <span class="arrow">&rarr;</span>
+            </a>
+          </div>
+
+        </div>
+
+        <p class="tier-note">Payment goes through Stripe. The license key is delivered by email straight after checkout. Activate it from the License tab inside Tapt.</p>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[04]</span>
+          <span class="sect-title">spec sheet</span>
+          <span class="sect-meta">// the details</span>
+        </header>
+
+        <div class="spec-card">
+          <dl>
+            <div class="spec-row"><dt>platform</dt><span class="leader"></span><dd>Windows 10 and 11, x64</dd></div>
+            <div class="spec-row"><dt>install size</dt><span class="leader"></span><dd>~5 MB</dd></div>
+            <div class="spec-row"><dt>stack</dt><span class="leader"></span><dd>Rust + Tauri, native overlay</dd></div>
+            <div class="spec-row"><dt>capture</dt><span class="leader"></span><dd>Visible in OBS &amp; screen recording</dd></div>
+            <div class="spec-row"><dt>activation</dt><span class="leader"></span><dd>License key, online check</dd></div>
+            <div class="spec-row"><dt>privacy</dt><span class="leader"></span><dd>Your keystrokes never leave the machine</dd></div>
+            <div class="spec-row"><dt>updates</dt><span class="leader"></span><dd>Manual download, no auto-updater</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="term-footer">
+    <div class="wrap">
+      <div class="left">
+        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
+        <span>echo "&copy; 2026 RAZKOM"</span>
+      </div>
+      <div class="right">
+        <a href="/">razkom.com</a>
+        <span class="sep">//</span>
+        <a href="https://authforge.cc" target="_blank" rel="noopener">licensed via authforge</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
