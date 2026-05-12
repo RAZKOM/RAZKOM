@@ -37,7 +37,33 @@
 .theme-tapt      { --accent: #1ea5c2; }
 .theme-blindspot { --accent: #ef4444; }
 .theme-filelens  { --accent: #d65a1f; }
-.theme-authforge { --accent: #7c5cf3; }
+/* AuthForge product palette (platform/frontend theme — dark surfaces + forest primary). */
+.theme-authforge {
+  --bg: #0f1117;
+  --bg-2: #16191f;
+  --bg-3: #1c2129;
+  --bg-hover: #1a1e26;
+  --border: #252932;
+  --border-2: #1e232c;
+  --ink: #e7eaef;
+  --ink-2: #8d939e;
+  --ink-3: #6d7580;
+  --ink-4: #5a6169;
+
+  --accent: #2d8a5f;
+  --af-success: #2979ff;
+  --af-info: #7c4dff;
+  --af-error: #f44336;
+}
+
+.theme-authforge .kicker {
+  color: var(--accent);
+}
+
+.theme-authforge .btn-primary,
+.theme-authforge .btn-primary:hover {
+  color: #0b0d11;
+}
 
 
 * { box-sizing: border-box; }
@@ -350,7 +376,7 @@ p:last-child { margin-bottom: 0; }
   transition: background 100ms ease;
 }
 .app-row--tapt       { --app-accent: #1ea5c2; }
-.app-row--authforge  { --app-accent: #7c5cf3; }
+.app-row--authforge  { --app-accent: #2d8a5f; }
 .app-row--blindspot  { --app-accent: #ef4444; }
 .app-row--filelens   { --app-accent: #d65a1f; }
 
@@ -1126,6 +1152,31 @@ p:last-child { margin-bottom: 0; }
 .af-license-status--valid .af-license-status-badge { color: var(--accent-green); }
 .af-license-status--invalid .af-license-status-badge { color: var(--traffic-red); }
 .af-license-status--checkout .af-license-status-badge { color: var(--accent-blue); }
+
+.theme-authforge .af-license-status {
+  background: color-mix(in srgb, var(--af-info) 8%, var(--bg-2));
+}
+.theme-authforge .af-license-status--valid {
+  border-color: var(--af-success);
+  background: color-mix(in srgb, var(--af-success) 10%, var(--bg-2));
+}
+.theme-authforge .af-license-status--invalid {
+  border-color: var(--af-error);
+  background: color-mix(in srgb, var(--af-error) 10%, var(--bg-2));
+}
+.theme-authforge .af-license-status--checkout {
+  border-color: var(--af-info);
+  background: color-mix(in srgb, var(--af-info) 10%, var(--bg-2));
+}
+.theme-authforge .af-license-status--valid .af-license-status-badge {
+  color: var(--af-success);
+}
+.theme-authforge .af-license-status--invalid .af-license-status-badge {
+  color: var(--af-error);
+}
+.theme-authforge .af-license-status--checkout .af-license-status-badge {
+  color: var(--af-info);
+}
 
 .af-license-status-msg {
   margin: 0;
