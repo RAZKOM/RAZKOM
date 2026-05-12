@@ -35,47 +35,54 @@ BLUE = "#58a6ff"
 @dataclass(frozen=True)
 class OgCard:
     filename: str
-    title: str
+    name: str
     description: str
     accent: str
     path_hint: str
+    logo_path: str | None = None
+    is_home: bool = False
 
 
 CARDS = [
     OgCard(
         filename="home.png",
-        title="RAZKOM - software studio",
-        description="Focused Windows tools by an independent studio: Tapt, AuthForge, BlindSpot, and FileLens.",
+        name="RAZKOM",
+        description="Small independent software studio. Focused tools for Windows.",
         accent="#58a6ff",
         path_hint="~",
+        is_home=True,
     ),
     OgCard(
         filename="tapt.png",
-        title="Tapt - keyboard overlay for Windows",
+        name="Tapt",
         description="Live keypress overlay for streamers and screencasters. One-time license, no subscription.",
         accent="#1ea5c2",
         path_hint="~/tapt",
+        logo_path="assets/icons/tapt.png",
     ),
     OgCard(
         filename="authforge.png",
-        title="AuthForge - software licensing API",
+        name="AuthForge",
         description="Issue keys, bind to hardware, run heartbeats, and verify Ed25519-signed responses.",
         accent="#2d8a5f",
         path_hint="~/authforge",
+        logo_path="assets/brands/authforge.png",
     ),
     OgCard(
         filename="blindspot.png",
-        title="BlindSpot - redaction overlays for Windows",
+        name="BlindSpot",
         description="Draw redaction boxes over any app window and keep them in place while windows move.",
         accent="#ef4444",
         path_hint="~/blindspot",
+        logo_path="assets/icons/blindspot.png",
     ),
     OgCard(
         filename="filelens.png",
-        title="FileLens - instant file inspector for Windows",
+        name="FileLens",
         description="Right-click files to inspect hashes, strings, hex, and PE metadata in one popup.",
         accent="#d65a1f",
         path_hint="~/filelens",
+        logo_path="assets/icons/filelens.png",
     ),
 ]
 
@@ -108,13 +115,125 @@ def _wrap_lines(text: str, width: int) -> list[str]:
     return textwrap.wrap(text, width=width, break_long_words=False, break_on_hyphens=False)
 
 
-def render_card(card: OgCard, out_dir: Path) -> None:
+def _paste_logo(
+    img: Image.Image,
+    root: Path,
+    logo_path: str | None,
+    left: int,
+    top: int,
+    box_size: int,
+    accent: str,
+) -> None:
+    draw = ImageDraw.Draw(img)
+    draw.rounded_rectangle(
+        [left, top, left + box_size, top + box_size],
+        radius=16,
+        fill="#202833",
+        outline=BORDER,
+        width=1,
+    )
+
+    if not logo_path:
+        return
+
+    logo_file = root / logo_path
+    if logo_file.suffix.lower() == ".svg":
+        # PIL does not natively decode SVG on most setups; fallback glyph.
+        fallback_font = _load_font(38, monospace=True)
+        draw.text((left + 30, top + 23), "AF", fill=accent, font=fallback_font)
+        return
+
+    try:
+        logo = Image.open(logo_file).convert("RGBA")
+    except (OSError, FileNotFoundError):
+        return
+
+
+    inset = 10
+    target_size = box_size - (inset * 2)
+    logo.thumbnail((target_size, target_size), Image.Resampling.LANCZOS)
+    px = left + (box_size - logo.width) // 2
+    py = top + (box_size - logo.height) // 2
+    img.paste(logo, (px, py), logo)
+
+
+def _render_home(card: OgCard, draw: ImageDraw.ImageDraw, content_x: int, content_y: int, mono: ImageFont.ImageFont) -> None:
+    draw.text(
+        (content_x, content_y),
+        f"user@razkom.com:{card.path_hint}$",
+        fill=GREEN,
+        font=mono,
+    )
+    draw.text((content_x + 338, content_y), "cat brand.txt", fill=BLUE, font=mono)
+
+    ascii_art = [
+        "██████╗  █████╗ ███████╗██╗  ██╗ ██████╗ ███╗   ███╗",
+        "██╔══██╗██╔══██╗╚══███╔╝██║ ██╔╝██╔═══██╗████╗ ████║",
+        "██████╔╝███████║  ███╔╝ █████╔╝ ██║   ██║██╔████╔██║",
+        "██╔══██╗██╔══██║ ███╔╝  ██╔═██╗ ██║   ██║██║╚██╔╝██║",
+        "██║  ██║██║  ██║███████╗██║  ██╗╚██████╔╝██║ ╚═╝ ██║",
+        "╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝",
+    ]
+    ascii_y = content_y + 60
+    ascii_line_height = mono.getbbox("M")[3] - mono.getbbox("M")[1]
+    for i, line in enumerate(ascii_art):
+        draw.text((content_x, ascii_y + (i * ascii_line_height)), line, fill="#ff5f56", font=mono)
+
+    draw.text(
+        (content_x, ascii_y + (len(ascii_art) * ascii_line_height) + 16),
+        "> small tools. native binaries. one thing well.",
+        fill=INK_2,
+        font=mono,
+    )
+
+
+def _render_app(
+    card: OgCard,
+    root: Path,
+    img: Image.Image,
+    draw: ImageDraw.ImageDraw,
+    content_x: int,
+    content_y: int,
+    mono: ImageFont.ImageFont,
+    sans_title: ImageFont.ImageFont,
+    sans_body: ImageFont.ImageFont,
+) -> None:
+    draw.text(
+        (content_x, content_y),
+        f"user@razkom.com:{card.path_hint}$",
+        fill=GREEN,
+        font=mono,
+    )
+    draw.text((content_x + 338, content_y), "open --preview", fill=BLUE, font=mono)
+
+    logo_box_size = 100
+    logo_y = content_y + 62
+    _paste_logo(img, root, card.logo_path, content_x, logo_y, logo_box_size, card.accent)
+
+    title_x = content_x + logo_box_size + 24
+    title_center_y = logo_y + (logo_box_size // 2)
+    draw.text((title_x, title_center_y), card.name, fill=INK, font=sans_title, anchor="lm")
+    title_width = draw.textlength(card.name, font=sans_title)
+    draw.text(
+        (title_x + int(title_width) + 4, title_center_y),
+        ".",
+        fill=card.accent,
+        font=sans_title,
+        anchor="lm",
+    )
+
+    body_y = logo_y + logo_box_size + 28
+    for i, line in enumerate(_wrap_lines(card.description, 66)):
+        draw.text((content_x, body_y + i * 38), line, fill=INK_2, font=sans_body)
+
+
+def render_card(card: OgCard, out_dir: Path, root: Path) -> None:
     img = Image.new("RGB", (WIDTH, HEIGHT), BG)
     _draw_vertical_gradient(img, "#0d1117", "#101723")
     draw = ImageDraw.Draw(img)
 
-    sans_title = _load_font(62)
-    sans_body = _load_font(30)
+    sans_title = _load_font(70)
+    sans_body = _load_font(28)
     mono = _load_font(24, monospace=True)
     mono_small = _load_font(20, monospace=True)
 
@@ -146,21 +265,10 @@ def render_card(card: OgCard, out_dir: Path) -> None:
 
     content_x = shell_x + 36
     content_y = shell_y + header_h + 28
-    draw.text(
-        (content_x, content_y),
-        f"user@razkom.com:{card.path_hint}$",
-        fill=GREEN,
-        font=mono,
-    )
-    draw.text((content_x + 340, content_y), "share --og", fill=card.accent, font=mono)
-
-    title_y = content_y + 64
-    for i, line in enumerate(_wrap_lines(card.title, 35)):
-        draw.text((content_x, title_y + i * 70), line, fill=INK, font=sans_title)
-
-    body_start = title_y + (len(_wrap_lines(card.title, 35)) * 70) + 18
-    for i, line in enumerate(_wrap_lines(card.description, 66)):
-        draw.text((content_x, body_start + i * 40), line, fill=INK_2, font=sans_body)
+    if card.is_home:
+        _render_home(card, draw, content_x, content_y, mono)
+    else:
+        _render_app(card, root, img, draw, content_x, content_y, mono, sans_title, sans_body)
 
     footer = f"> razkom.com/{card.path_hint.strip('~/')}" if card.path_hint != "~" else "> razkom.com"
     draw.text((content_x, shell_y + shell_h - 58), footer, fill=card.accent, font=mono)
@@ -176,7 +284,7 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     for card in CARDS:
-        render_card(card, out_dir)
+        render_card(card, out_dir, root)
 
 
 if __name__ == "__main__":
