@@ -1,23 +1,24 @@
-### RAZKOM
+<div align="center">
+
+<img src="assets/favicon.svg" alt="RAZKOM" width="120" height="120" />
+
+# RAZKOM
 
 Independent software dev building **specialied tools**. Some projects are free and open source; others are paid. No subscriptions.
 
 **Website:** [razkom.com](https://razkom.com)
 
----
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/razkom)
+[![GitHub](https://img.shields.io/badge/GitHub-RAZKOM-181717?logo=github&logoColor=white)](https://github.com/RAZKOM)
 
-**Projects**
-
-- **[Tapt](https://razkom.com/tapt/)** — windows utility · [buy](https://razkom.com/tapt/)
-- **[AuthForge](https://razkom.com/authforge/)** — identity/auth tooling · [authforge.cc](https://authforge.cc)
-- **[BlindSpot](https://razkom.com/blindspot/)** — open source · [releases](https://github.com/RAZKOM/BlindSpot/releases)
-- **[FileLens](https://razkom.com/filelens/)** — open source · [releases](https://github.com/RAZKOM/FileLens/releases)
+</div>
 
 ---
 
 **Elsewhere**
 
 - [GitHub](https://github.com/RAZKOM)
+- [Ko-fi](https://ko-fi.com/razkom)
 
 ---
 

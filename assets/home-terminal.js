@@ -391,6 +391,7 @@
     authforge: '/authforge/',
     blindspot: '/blindspot/',
     filelens: '/filelens/',
+    jsdecloak: '/jsdecloak/',
   };
 
   var TAB_COMMANDS = [
@@ -527,7 +528,13 @@
 
   var LS_DATE = 'May 08 2026';
 
-  var HOME_APP_DIRS = ['tapt/', 'authforge/', 'blindspot/', 'filelens/'];
+  var HOME_APP_DIRS = [
+    'tapt/',
+    'authforge/',
+    'blindspot/',
+    'filelens/',
+    'jsdecloak/',
+  ];
 
   function appendShellPre(text) {
     appendPlainOutput(text);

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>JSDecloak. — browser workbench for obfuscated JavaScript · RAZKOM</title>
+  <meta name="description" content="JSDecloak is a browser workbench for obfuscated JavaScript. Beautify, deobfuscate, and do scope-aware renames. Free and open source under MIT." />
+  <link rel="icon" type="image/svg+xml" href="/assets/brands/jsdecloak.svg" />
+  <link rel="canonical" href="https://razkom.com/jsdecloak/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="JSDecloak — browser workbench for obfuscated JavaScript" />
+  <meta property="og:description" content="Beautify, deobfuscate, and rename with scope awareness. Runs client-side with no backend." />
+  <meta property="og:url" content="https://razkom.com/jsdecloak/" />
+  <meta property="og:image" content="https://razkom.com/assets/og/home.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://razkom.com/assets/og/home.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="theme-jsdecloak">
+  <header class="term-nav">
+    <div class="wrap">
+      <div class="term-nav-left">
+        <a href="/" class="term-brand" aria-label="RAZKOM home">
+          RAZKOM<span class="slash">/</span><span class="path">jsdecloak</span>
+        </a>
+      </div>
+      <nav class="term-nav-links" aria-label="Primary">
+        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-hero app-hero--stack">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="kicker">$ ./jsdecloak --info</p>
+          <div class="app-hero-title-row">
+            <img class="app-hero-mark" src="/assets/brands/jsdecloak.svg" width="128" height="128" alt="" decoding="async" />
+            <h1 class="app-title">JSDecloak<span class="punct">.</span></h1>
+          </div>
+          <p class="app-subhead">A browser workbench for obfuscated JavaScript: beautify, deobfuscate, parse, inspect symbols, and run scope-aware renames without sending code to a backend.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary"
+               href="https://jsdecloak.razkom.com/"
+               target="_blank" rel="noopener">
+              Open JSDecloak
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="btn"
+               href="https://github.com/RAZKOM/JSDecloak"
+               target="_blank" rel="noopener">
+              View source
+            </a>
+            <span class="cta-note">MIT license &middot; client-side app</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[01]</span>
+          <span class="sect-title">what it does</span>
+          <span class="sect-meta">// in browser</span>
+        </header>
+
+        <div class="features features--two-col">
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-5 3 5 3"/><path d="M16 9l5 3-5 3"/><path d="M14 4l-4 16"/></svg>
+            </span>
+            <h3>Pipeline-based cleanup</h3>
+            <p>Run formatter and deobfuscation passes in order, then parse and index symbols in one flow.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M4 12h10"/><path d="M4 17h8"/><path d="M18 17l2 2 4-4"/></svg>
+            </span>
+            <h3>Scope-aware renames</h3>
+            <p>Rename a binding and update references safely across scopes, without text-replace breakage.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+            </span>
+            <h3>Analysis panels</h3>
+            <p>Inspect symbols, strings, annotations, diffs, and logs while iterating on the cleaned output.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+            </span>
+            <h3>No backend required</h3>
+            <p>Runs in the browser with worker-based processing so your code stays local to your session.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[02]</span>
+          <span class="sect-title">spec sheet</span>
+          <span class="sect-meta">// the details</span>
+        </header>
+
+        <div class="spec-card">
+          <dl>
+            <div class="spec-row"><dt>type</dt><span class="leader"></span><dd>Browser app</dd></div>
+            <div class="spec-row"><dt>license</dt><span class="leader"></span><dd>MIT</dd></div>
+            <div class="spec-row"><dt>stack</dt><span class="leader"></span><dd>React, TypeScript, Monaco, Babel</dd></div>
+            <div class="spec-row"><dt>deobfuscation</dt><span class="leader"></span><dd>Webcrack, Synchrony, Wakaru</dd></div>
+            <div class="spec-row"><dt>workers</dt><span class="leader"></span><dd>Pipeline runs off the UI thread</dd></div>
+            <div class="spec-row"><dt>source</dt><span class="leader"></span><dd>github.com/RAZKOM/JSDecloak</dd></div>
+            <div class="spec-row"><dt>live app</dt><span class="leader"></span><dd>jsdecloak.razkom.com</dd></div>
+            <div class="spec-row"><dt>cost</dt><span class="leader"></span><dd>Free</dd></div>
+          </dl>
+        </div>
+
+        <p style="margin-top: 36px; color: var(--ink-3); font-size: 14px; font-style: italic;">
+          This page is the Razkom overview. The actual app runs at
+          <a href="https://jsdecloak.razkom.com/" target="_blank" rel="noopener" style="color: var(--ink-2); font-style: normal;">jsdecloak.razkom.com</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="term-footer">
+    <div class="wrap">
+      <div class="left">
+        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
+        <span>echo "&copy; 2026 RAZKOM"</span>
+      </div>
+      <div class="right">
+        <a href="/">razkom.com</a>
+        <span class="sep">//</span>
+        <a href="https://jsdecloak.razkom.com/" target="_blank" rel="noopener">jsdecloak.razkom.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
