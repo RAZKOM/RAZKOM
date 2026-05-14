@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="assets/favicon.svg" alt="RAZKOM" width="120" height="120" />
-
 # RAZKOM
 
 Independent software dev building **specialied tools**. Some projects are free and open source; others are paid. No subscriptions.
