@@ -84,6 +84,14 @@ CARDS = [
         path_hint="~/filelens",
         logo_path="assets/icons/filelens.png",
     ),
+    OgCard(
+        filename="tape.png",
+        name="Tape",
+        description="Pin timestamped notes to a waveform and share the review as a URL. Audio stays local.",
+        accent="#e86d2d",
+        path_hint="~/tape",
+        logo_path="assets/icons/tape.png",
+    ),
 ]
 
 

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>Tape. — timestamped music reviews in a URL · RAZKOM</title>
+  <meta name="description" content="Tape pins timestamped notes to a waveform while you listen. Share the review as a link. Audio stays on your device; only your notes travel." />
+  <link rel="icon" type="image/png" href="/assets/brands/tape.png" />
+  <link rel="canonical" href="https://razkom.com/tape/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tape — timestamped music reviews in a URL" />
+  <meta property="og:description" content="Pin notes to the waveform while you listen. Share a link; the recipient loads the same track locally and sees every pin." />
+  <meta property="og:url" content="https://razkom.com/tape/" />
+  <meta property="og:image" content="https://razkom.com/assets/og/tape.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://razkom.com/assets/og/tape.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="theme-tape">
+  <header class="term-nav">
+    <div class="wrap">
+      <div class="term-nav-left">
+        <a href="/" class="term-brand" aria-label="RAZKOM home">
+          RAZKOM<span class="slash">/</span><span class="path">tape</span>
+        </a>
+      </div>
+      <nav class="term-nav-links" aria-label="Primary">
+        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="app-hero app-hero--stack">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="kicker">$ ./tape --info</p>
+          <div class="app-hero-title-row">
+            <img class="app-hero-mark" src="/assets/brands/tape.png" width="288" height="288" alt="" decoding="async" />
+            <h1 class="app-title">Tape<span class="punct">.</span></h1>
+          </div>
+          <p class="app-subhead">Pin timestamped notes to a waveform while you listen. Share the review as a URL. Your audio never leaves the browser; only the filename and notes go in the link.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary"
+               href="https://tape.razkom.com/"
+               target="_blank" rel="noopener">
+              Open Tape
+              <span class="arrow">&rarr;</span>
+            </a>
+            <a class="btn"
+               href="https://github.com/RAZKOM/tape"
+               target="_blank" rel="noopener">
+              View source
+            </a>
+            <span class="cta-note">MIT &middot; serverless</span>
+          </div>
+        </div>
+
+        <figure class="hero-mock hero-demo">
+          <video
+            src="/assets/tape-demo-compressed.mp4"
+            width="2178"
+            height="1454"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Screen recording: drop a track onto Tape, pin timestamped notes on the waveform during playback, share a link, then open that link in listener mode with the same file."></video>
+        </figure>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[01]</span>
+          <span class="sect-title">how it works</span>
+          <span class="sect-meta">// pin, wave, share</span>
+        </header>
+
+        <div class="prose">
+          <ol>
+            <li>Drop an audio file (MP3, WAV, OGG, FLAC, M4A) or tap to pick one.</li>
+            <li>Play the track. Tap <b>Pin</b> at any moment to drop a timestamped note. Playback keeps going while you type.</li>
+            <li>Drag on the waveform to scrub. Pull down for finer precision when you need to land on a specific hit or vocal entry.</li>
+            <li>Tap <b>Share</b>. Your filename and notes compress into the URL hash and copy to the clipboard.</li>
+            <li>The recipient opens the link, picks the same file from their device, and every pin appears on the waveform.</li>
+          </ol>
+          <p>No account, no upload, no backend. The link is the storage.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[02]</span>
+          <span class="sect-title">what you get</span>
+          <span class="sect-meta">// reviewer + listener</span>
+        </header>
+
+        <div class="features">
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/><path d="M8 22h8"/></svg>
+            </span>
+            <h3>Two modes, one page</h3>
+            <p>No hash means reviewer mode: upload, pin, share. A hash with encoded data means listener mode: load the matching file and read the review.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M12 4v16"/><circle cx="12" cy="12" r="3"/></svg>
+            </span>
+            <h3>Precision scrubbing</h3>
+            <p>Horizontal drag seeks. Vertical distance from the waveform sets the speed ratio across five bands, down to 1/16x micro-scrubbing.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h3>Pins on the waveform</h3>
+            <p>Numbered knobs along the wave with glowing stems. Tap a pin to seek there. The active pin highlights in the notes list as playback reaches it.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            </span>
+            <h3>URL as storage</h3>
+            <p>Notes are LZ-compressed into the hash fragment. A typical three- to five-minute track with dozens of pins stays well under 2 KB.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+            </span>
+            <h3>Filename guard</h3>
+            <p>Listener mode checks that the file picked matches the reviewer&apos;s filename, so you don&apos;t review one mix and listen to another by accident.</p>
+          </div>
+
+          <div class="feature">
+            <span class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m16.2 7.8 2.9-2.9"/><path d="M18 12h4"/><path d="m16.2 16.2 2.9 2.9"/><path d="M12 18v4"/><path d="m4.9 19.1 2.9-2.9"/><path d="M2 12h4"/><path d="m4.9 4.9 2.9 2.9"/></svg>
+            </span>
+            <h3>Offline ready</h3>
+            <p>Single HTML file with CDN deps. Once cached, it works offline. Host it anywhere static, including a USB stick.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <section class="section" style="padding-top: 0;">
+      <div class="wrap">
+        <header class="sect-head">
+          <span class="sect-num">[03]</span>
+          <span class="sect-title">spec sheet</span>
+          <span class="sect-meta">// the details</span>
+        </header>
+
+        <div class="spec-card">
+          <dl>
+            <div class="spec-row"><dt>type</dt><span class="leader"></span><dd>Browser app (single HTML file)</dd></div>
+            <div class="spec-row"><dt>audio</dt><span class="leader"></span><dd>Stays on your device</dd></div>
+            <div class="spec-row"><dt>formats</dt><span class="leader"></span><dd>MP3, WAV, OGG, FLAC, M4A</dd></div>
+            <div class="spec-row"><dt>stack</dt><span class="leader"></span><dd>WaveSurfer.js, LZ-string</dd></div>
+            <div class="spec-row"><dt>license</dt><span class="leader"></span><dd>MIT</dd></div>
+            <div class="spec-row"><dt>source</dt><span class="leader"></span><dd>github.com/RAZKOM/tape</dd></div>
+            <div class="spec-row"><dt>live app</dt><span class="leader"></span><dd>tape.razkom.com</dd></div>
+            <div class="spec-row"><dt>cost</dt><span class="leader"></span><dd>Free</dd></div>
+          </dl>
+        </div>
+
+        <p style="margin-top: 36px; color: var(--ink-3); font-size: 14px; font-style: italic;">
+          This page is the Razkom overview. The app runs at
+          <a href="https://tape.razkom.com/" target="_blank" rel="noopener" style="color: var(--ink-2); font-style: normal;">tape.razkom.com</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="term-footer">
+    <div class="wrap">
+      <div class="left">
+        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
+        <span>echo "&copy; 2026 RAZKOM"</span>
+      </div>
+      <div class="right">
+        <a href="/">razkom.com</a>
+        <span class="sep">//</span>
+        <a href="https://tape.razkom.com/" target="_blank" rel="noopener">tape.razkom.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

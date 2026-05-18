@@ -33,6 +33,7 @@
   }
 
   var segments = [].slice.call(intro.querySelectorAll('.term-segment'));
+  var SHOWAPPS_SEGMENT_INDEX = 2;
 
   var fullCmdText = segments.map(function (seg) {
     var inp = seg.querySelector('.input');
@@ -284,7 +285,7 @@
             appendExecutedCommand(line);
             input.value = '';
 
-            var deferApps = idx === 2;
+            var deferApps = idx === SHOWAPPS_SEGMENT_INDEX;
             appendStdoutFromTemplate(idx, deferApps);
 
             trackTimer(
@@ -306,6 +307,12 @@
 
   function normalizeCmd(s) {
     return s.replace(/\s+/g, ' ').trim().toLowerCase();
+  }
+
+  function commandHead(line) {
+    return normalizeCmd(line).split(/\s+/).filter(function (p) {
+      return p.length > 0;
+    })[0] || '';
   }
 
   function parseLs(line) {
@@ -392,6 +399,7 @@
     blindspot: '/blindspot/',
     filelens: '/filelens/',
     jsdecloak: '/jsdecloak/',
+    tape: '/tape/',
   };
 
   var TAB_COMMANDS = [
@@ -401,6 +409,7 @@
     'help',
     'ls',
     'pwd',
+    'showapps',
     'whoami',
   ];
 
@@ -534,10 +543,20 @@
     'blindspot/',
     'filelens/',
     'jsdecloak/',
+    'tape/',
   ];
 
   function appendShellPre(text) {
     appendPlainOutput(text);
+  }
+
+  function runShowapps() {
+    var c = getStdoutClone(SHOWAPPS_SEGMENT_INDEX);
+    if (!c) {
+      appendShellOut('showapps: catalog unavailable', true);
+      return;
+    }
+    appendStdoutClone(c);
   }
 
   function runLsHome(parsed) {
@@ -608,6 +627,8 @@
       '      Print this synopsis.',
       '  ls [-al] [PATH]',
       '      List directory. -a hidden; -l long; PATH defaults to .',
+      '  showapps',
+      '      Show the interactive product catalog (same as the intro).',
       '  pwd',
       '      Print working directory.',
       '  whoami',
@@ -639,6 +660,11 @@
 
     if (k === 'pwd') {
       appendShellPre('/home/user');
+      return;
+    }
+
+    if (commandHead(line) === 'showapps') {
+      runShowapps();
       return;
     }
 

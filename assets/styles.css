@@ -38,6 +38,7 @@
 .theme-blindspot { --accent: #ef4444; }
 .theme-filelens  { --accent: #d65a1f; }
 .theme-jsdecloak { --accent: #f99e42; }
+.theme-tape      { --accent: #e86d2d; }
 /* AuthForge product palette (platform/frontend theme — dark surfaces + forest primary). */
 .theme-authforge {
   --bg: #0f1117;
@@ -381,6 +382,7 @@ p:last-child { margin-bottom: 0; }
 .app-row--blindspot  { --app-accent: #ef4444; }
 .app-row--filelens   { --app-accent: #d65a1f; }
 .app-row--jsdecloak  { --app-accent: #f99e42; }
+.app-row--tape       { --app-accent: #e86d2d; }
 
 .app-row:last-child { border-bottom: 0; }
 .app-row:hover { background: var(--bg-hover); }
@@ -397,6 +399,7 @@ p:last-child { margin-bottom: 0; }
 .term-session.term-anim .apps-list.apps-revealed .app-row:nth-child(3) { animation-delay: 0.16s; }
 .term-session.term-anim .apps-list.apps-revealed .app-row:nth-child(4) { animation-delay: 0.22s; }
 .term-session.term-anim .apps-list.apps-revealed .app-row:nth-child(5) { animation-delay: 0.28s; }
+.term-session.term-anim .apps-list.apps-revealed .app-row:nth-child(6) { animation-delay: 0.34s; }
 @keyframes termAppRowIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
