@@ -11,22 +11,7 @@ Independent software dev building **specialied tools**. Some projects are free a
 
 ---
 
-### Main Project
 
-<table>
-<tr>
-<td>
-
-**[AuthForge.cc](https://authforge.cc)** &nbsp;•&nbsp; Licensing API for Desktop Software
-
-A drop-in licensing API for desktop apps — license keys, hardware locking (HWID), and Ed25519-signed validation wired up in under 10 minutes. Unlimited apps and licenses. Pay only for real auth traffic, never per seat or product.
-
-[![Visit AuthForge](https://img.shields.io/badge/authforge.cc-Check%20it%20out%20→-6e40c9?style=for-the-badge&logoColor=white)](https://authforge.cc)
-&nbsp;
-[![Docs](https://img.shields.io/badge/Docs-docs.authforge.cc-555?style=for-the-badge)](https://docs.authforge.cc)
-
-</td>
-</tr>
-</table>
+[![AuthForge](./assets/authforge-card.svg)](https://authforge.cc)
 
 </div>
