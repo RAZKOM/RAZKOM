@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0d1117" />
-  <title>Tapt. — keyboard overlay for Windows · RAZKOM</title>
-  <meta name="description" content="Tapt is a live keyboard overlay for Windows. Show what you press on top of any app. Free one-hour trial, then a one-time $2.99 lifetime license." />
-  <link rel="icon" type="image/png" href="/assets/brands/tapt.png" />
+  <meta name="theme-color" content="#0c0c0e" />
+  <title>Tapt — keyboard overlay for Windows · RAZKOM</title>
+  <meta name="description" content="Tapt is a live keyboard overlay for Windows. Show what you press on top of any app. Free one-hour trial, then a one-time $2.99 lifetime license, licensed with AuthForge." />
+  <link rel="icon" href="/assets/brands/tapt.png" />
   <link rel="canonical" href="https://razkom.com/tapt/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Tapt. — keyboard overlay for Windows" />
+  <meta property="og:title" content="Tapt — keyboard overlay for Windows" />
   <meta property="og:description" content="A live keyboard overlay for Windows. Free 1-hour trial, then $2.99 once for life." />
   <meta property="og:url" content="https://razkom.com/tapt/" />
   <meta property="og:image" content="https://razkom.com/assets/og/tapt.png" />
@@ -21,268 +21,146 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="/assets/site.js" defer></script>
 </head>
-<body class="theme-tapt">
-  <header class="term-nav">
+<body>
+  <header class="site-head">
     <div class="wrap">
-      <div class="term-nav-left">
-        <a href="/" class="term-brand" aria-label="RAZKOM home">
-          RAZKOM<span class="slash">/</span><span class="path">tapt</span>
-        </a>
-      </div>
-      <nav class="term-nav-links" aria-label="Primary">
-        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      <a class="brand" href="/" aria-label="RAZKOM home"><img src="/assets/avatar.svg" alt="" width="28" height="28" />RAZKOM<span class="path">/<b>tapt</b></span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#authforge">authforge</a>
+        <a href="/#apps">apps</a>
+        <a href="/#packages">packages</a>
+        <button type="button" class="shell-btn" id="open-shell" aria-label="Open the RAZKOM shell"><kbd>`</kbd><span class="label">shell</span></button>
+        <a class="gh-link keep" href="https://github.com/RAZKOM" target="_blank" rel="noopener" aria-label="RAZKOM on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="app-hero app-hero--stack">
-      <div class="wrap">
-        <div class="hero-copy">
-          <p class="kicker">$ ./tapt --info</p>
-          <div class="app-hero-title-row">
-            <img class="app-hero-mark" src="/assets/brands/tapt.png" width="144" height="144" alt="" decoding="async" />
-            <h1 class="app-title">Tapt<span class="punct">.</span></h1>
-          </div>
-          <p class="app-subhead">Shows the keys you are pressing, live, on top of anything else on your screen. Built for streamers, screencasters, and tutorial makers.</p>
-          <div class="cta-row cta-row--stack">
-            <div class="cta-row-pair">
-              <a class="btn btn-primary"
-                 href="https://buy.stripe.com/dRmaEZbo20ze4A4bTZe3e03"
-                 target="_blank" rel="noopener">
-                Buy lifetime for $2.99
-                <span class="arrow">&rarr;</span>
-              </a>
-            </div>
-            <a class="btn btn-primary btn-cta-hero"
-               href="https://github.com/RAZKOM/Tapt/releases/latest/download/TaptSetup.exe"
-               target="_blank" rel="noopener">
-              Download now
-              <span class="arrow">&#8599;</span>
-            </a>
-            <span class="cta-note">Free 1-hour trial built in &middot; then $2.99 once, not a subscription</span>
-          </div>
-        </div>
-
-        <figure class="hero-mock hero-demo">
-          <video
-            src="/assets/tapt-demo-compressed.mp4"
-            width="1920"
-            height="1008"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            aria-label="Screen recording of the Tapt keyboard overlay on Windows"></video>
-        </figure>
+  <main class="layout">
+    <aside class="side">
+      <img class="side-icon" src="/assets/brands/tapt.png" alt="" width="88" height="88" />
+      <h1 class="side-name">Tapt</h1>
+      <p class="side-tag">$2.99 once &middot; gpl-3.0</p>
+      <p class="side-bio">Live keyboard overlay for Windows. For streamers, screencasters and tutorial makers.</p>
+      <div class="side-actions">
+        <a class="btn btn-red" href="https://buy.stripe.com/dRmaEZbo20ze4A4bTZe3e03" target="_blank" rel="noopener">Buy lifetime &middot; $2.99</a>
+        <a class="btn" href="https://github.com/RAZKOM/Tapt/releases/latest/download/TaptSetup.exe" target="_blank" rel="noopener">Download free trial <span class="arrow">&darr;</span></a>
       </div>
-    </section>
-    <section class="section">
-      <div class="wrap">
-        <header class="sect-head">
-          <span class="sect-num">[01]</span>
-          <span class="sect-title">two display modes</span>
-          <span class="sect-meta">// switch from the tray</span>
-        </header>
-
-        <div class="modes-grid">
-
-          <div class="mode-card">
-            <div class="mode-visual">
-              <div class="feed-mock" aria-hidden="true">
-                <span class="pill">tab</span>
-                <span class="pill">w</span>
-                <span class="pill">a</span>
-                <span class="pill">esc</span>
-                <span class="pill">space</span>
-              </div>
-            </div>
-            <div class="text">
-              <h3>Key feed</h3>
-              <p>Key chips in a horizontal row, fading for older presses. Lightweight, animated, always shows what you just typed.</p>
-            </div>
-          </div>
-
-          <div class="mode-card">
-            <div class="mode-visual mode-visual--kb">
-              <div class="kb-mock" aria-hidden="true">
-                <div class="kb-row">
-                  <span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
-                  <span class="kb-key kb-back"></span>
-                </div>
-                <div class="kb-row">
-                  <span class="kb-key kb-tab"></span>
-                  <span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
-                </div>
-                <div class="kb-row">
-                  <span class="kb-key kb-caps"></span>
-                  <span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
-                  <span class="kb-key kb-enter"></span>
-                </div>
-                <div class="kb-row">
-                  <span class="kb-key kb-shift-l"></span>
-                  <span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key is-active"></span><span class="kb-key"></span><span class="kb-key"></span><span class="kb-key"></span>
-                  <span class="kb-key kb-shift-r"></span>
-                </div>
-                <div class="kb-row">
-                  <span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span>
-                  <span class="kb-key kb-space"></span>
-                  <span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span><span class="kb-key kb-mod"></span>
-                </div>
-              </div>
-            </div>
-            <div class="text">
-              <h3>Keyboard overlay</h3>
-              <p>An on-screen keyboard layout, lit up as you type. Switch modes any time from the tray.</p>
-            </div>
-          </div>
-
-        </div>
+      <p class="side-note">1-hour trial built in. One key activates up to 5 PCs.</p>
+      <ul class="side-links">
+        <li><a href="https://github.com/RAZKOM/Tapt" target="_blank" rel="noopener">source on github</a></li>
+        <li><a href="mailto:hello@razkom.com">hello@razkom.com</a></li>
+      </ul>
+      <div class="chips"><span class="chip">windows</span><span class="chip">rust</span><span class="chip">tauri</span><a class="chip chip-af" href="#built-with-authforge">licensed with authforge</a></div>
+      <div class="side-langs">
+        <div class="langbar" aria-hidden="true"><span style="width:55.4%;background:#dea584"></span><span style="width:36.2%;background:#3178c6"></span><span style="width:8.0%;background:#663399"></span><span style="width:0.4%;background:#8b8b93"></span></div>
+        <ul class="langs"><li><i class="lang-dot" style="background:#dea584"></i><b>Rust</b> 55.4%</li><li><i class="lang-dot" style="background:#3178c6"></i><b>TypeScript</b> 36.2%</li><li><i class="lang-dot" style="background:#663399"></i><b>CSS</b> 8.0%</li><li><i class="lang-dot" style="background:#8b8b93"></i><b>Other</b> 0.4%</li></ul>
       </div>
-    </section>
-    <section class="section" style="padding-top: 0;">
-      <div class="wrap">
-        <header class="sect-head">
-          <span class="sect-num">[02]</span>
-          <span class="sect-title">features</span>
-          <span class="sect-meta">// v1, windows 10 / 11</span>
-        </header>
+    </aside>
 
-        <div class="features">
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="8" height="12" rx="1.5"/><rect x="13" y="6" width="8" height="12" rx="1.5"/></svg>
-            </span>
-            <h3>Two display modes</h3>
-            <p>A horizontal key feed, or an on-screen keyboard layout. Switch any time from the tray.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l9 5-9 5-9-5z"/><path d="M3 14l9 5 9-5"/></svg>
-            </span>
-            <h3>Always on top</h3>
-            <p>The overlay is transparent, click-through, and stays above other windows. It does not show up in the taskbar.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M2 12a10 10 0 0 1 20 0"/></svg>
-            </span>
-            <h3>OBS friendly</h3>
-            <p>Visible to OBS and standard screen capture on Windows, so it shows up in your stream or recording.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/><circle cx="6.5" cy="6" r="0.5" fill="currentColor"/><circle cx="9" cy="6" r="0.5" fill="currentColor"/></svg>
-            </span>
-            <h3>Tray controlled</h3>
-            <p>Lives in the system tray. Right-click for settings, position, and to quit. No window to manage.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h6l-6 6h6"/><path d="M14 4h4l-4 4h4"/><path d="M14 14h6l-6 6h6"/></svg>
-            </span>
-            <h3>Quiet when idle</h3>
-            <p>The native overlay does almost nothing when you are not typing. No background animation loop burning your CPU.</p>
-          </div>
-
-        </div>
+    <div class="content">
+      <p class="lead">See every keystroke. Live, on screen, on stream.</p>
+      <p class="lead-sub">Tapt shows the keys you are pressing, live, on top of anything else on your screen. Built for streamers, screencasters, tutorial makers, and live demos.</p>
+      <div class="media">
+        <video src="/assets/tapt-demo-compressed.mp4" width="1920" height="1008" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the Tapt keyboard overlay on Windows"></video>
       </div>
-    </section>
-    <section class="section" id="pricing" style="padding-top: 0;">
-      <div class="wrap">
-        <header class="sect-head">
-          <span class="sect-num">[03]</span>
-          <span class="sect-title">pricing</span>
-          <span class="sect-meta">// licensed via authforge</span>
-        </header>
 
-        <div class="tier-grid">
+      <section class="block">
+        <h2 class="block-label"><span class="n">01</span>display modes</h2>
+        <div class="feats">
+          <div class="feat"><b>Key feed</b><span>Key chips in a horizontal row, fading for older presses. Always shows what you just typed.</span></div>
+          <div class="feat"><b>Keyboard overlay</b><span>An on-screen keyboard (60%, tenkeyless or full size), lit up as you type.</span></div>
+        </div>
+      </section>
 
+      <section class="block">
+        <h2 class="block-label"><span class="n">02</span>features</h2>
+        <div class="feats">
+          <div class="feat"><b>Always on top</b><span>Transparent, click-through, above every window, and not in the taskbar.</span></div>
+          <div class="feat"><b>OBS friendly</b><span>Visible to OBS and standard screen capture, so it shows up on stream.</span></div>
+          <div class="feat"><b>Tray controlled</b><span>Settings, position and quit live in the tray. No window to manage.</span></div>
+          <div class="feat"><b>Make it yours</b><span>Light and dark themes, accent colors, sizes, opacity and placement.</span></div>
+          <div class="feat"><b>Quiet when idle</b><span>Does almost nothing when you aren't typing. No animation loop burning CPU.</span></div>
+          <div class="feat"><b>Private</b><span>Keystrokes never leave your PC. Tapt draws them and doesn't log or store them.</span></div>
+        </div>
+      </section>
+
+      <section class="block" id="pricing">
+        <h2 class="block-label"><span class="n">03</span>pricing</h2>
+        <div class="tiers">
           <div class="tier">
-            <span class="tier-label">free trial</span>
-            <div class="tier-amount">$0 <span class="per">/ 1 hour of use</span></div>
-            <ul>
-              <li>Every feature, no key or card needed</li>
-              <li>Only counts down while the overlay is on</li>
-              <li>Built into the regular download</li>
-            </ul>
-            <a class="btn"
-               href="https://github.com/RAZKOM/Tapt/releases/latest/download/TaptSetup.exe"
-               target="_blank" rel="noopener">
-              Download
-              <span class="arrow">&#8599;</span>
-            </a>
+            <span class="tier-name">free trial</span>
+            <div class="tier-price">$0 <small>/ 1 hour of overlay time</small></div>
+            <ul><li>Every feature, no key or card needed</li><li>Only counts down while the overlay is on</li><li>Built into the regular download</li></ul>
+            <a class="btn btn-sm" href="https://github.com/RAZKOM/Tapt/releases/latest/download/TaptSetup.exe" target="_blank" rel="noopener">Download</a>
           </div>
-
-          <div class="tier is-best">
-            <span class="tier-best-pill">// one price</span>
-            <span class="tier-label">lifetime</span>
-            <div class="tier-amount">$2.99 <span class="per">/ once</span></div>
-            <ul>
-              <li>Pay once, use forever</li>
-              <li>Works offline after a one-time activation</li>
-              <li>Activate up to 5 PCs with one key</li>
-            </ul>
-            <a class="btn btn-primary"
-               href="https://buy.stripe.com/dRmaEZbo20ze4A4bTZe3e03"
-               target="_blank" rel="noopener">
-              Buy lifetime
-              <span class="arrow">&rarr;</span>
-            </a>
+          <div class="tier best">
+            <span class="tier-name">lifetime</span>
+            <div class="tier-price">$2.99 <small>/ once</small></div>
+            <ul><li>Pay once, use forever</li><li>Works offline after one activation</li><li>Up to 5 PCs per key</li></ul>
+            <a class="btn btn-sm btn-red" href="https://buy.stripe.com/dRmaEZbo20ze4A4bTZe3e03" target="_blank" rel="noopener">Buy lifetime</a>
           </div>
-
         </div>
+        <p class="after-note">Checkout goes through Stripe and your key arrives by email straight away. Paste it into the License tab in Tapt. Questions, activation problems or a new PC? <a href="mailto:hello@razkom.com">hello@razkom.com</a>.</p>
+      </section>
 
-        <p class="tier-note">Payment goes through Stripe. The license key is delivered by email straight after checkout. Paste it into the License tab inside Tapt; activation needs the internet once, then never again. Questions or problems? Email <a href="mailto:hello@razkom.com">hello@razkom.com</a>.</p>
-      </div>
-    </section>
-    <section class="section" style="padding-top: 0;">
-      <div class="wrap">
-        <header class="sect-head">
-          <span class="sect-num">[04]</span>
-          <span class="sect-title">spec sheet</span>
-          <span class="sect-meta">// the details</span>
-        </header>
-
-        <div class="spec-card">
-          <dl>
-            <div class="spec-row"><dt>platform</dt><span class="leader"></span><dd>Windows 10 and 11, x64</dd></div>
-            <div class="spec-row"><dt>install size</dt><span class="leader"></span><dd>~5 MB</dd></div>
-            <div class="spec-row"><dt>stack</dt><span class="leader"></span><dd>Rust + Tauri, native overlay</dd></div>
-            <div class="spec-row"><dt>capture</dt><span class="leader"></span><dd>Visible in OBS &amp; screen recording</dd></div>
-            <div class="spec-row"><dt>activation</dt><span class="leader"></span><dd>License key, online once, then offline</dd></div>
-            <div class="spec-row"><dt>privacy</dt><span class="leader"></span><dd>Your keystrokes never leave the machine</dd></div>
-            <div class="spec-row"><dt>updates</dt><span class="leader"></span><dd>Manual download, no auto-updater</dd></div>
-            <div class="spec-row"><dt>source</dt><span class="leader"></span><dd><a href="https://github.com/RAZKOM/Tapt" target="_blank" rel="noopener">Open source on GitHub (GPL-3.0)</a></dd></div>
-            <div class="spec-row"><dt>support</dt><span class="leader"></span><dd><a href="mailto:hello@razkom.com">hello@razkom.com</a></dd></div>
-          </dl>
+      <section class="block" id="built-with-authforge">
+        <h2 class="block-label"><span class="n">04</span>built with authforge</h2>
+        <div class="af-callout">
+          <p>Tapt is a working <b>AuthForge</b> demo. It sells a <b>$2.99 lifetime license</b> with a free trial and runs <b>offline after a single activation</b>, with payments by Stripe and no backend of our own. Everything here is off the shelf, so you can ship the same setup.</p>
+          <ol class="steps">
+            <li><span>The buyer pays through a plain Stripe Checkout link</span><a href="https://docs.authforge.cc/features/commerce?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt" target="_blank" rel="noopener">Commerce</a></li>
+            <li><span>AuthForge receives the Stripe webhook, issues a key and emails it</span><a href="https://docs.authforge.cc/features/commerce?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt#buyer-delivery-email" target="_blank" rel="noopener">Buyer email</a></li>
+            <li><span>Tapt trades the key for a signed <code class="mono">.authforge</code> file bound to this PC</span><a href="https://docs.authforge.cc/sdk/rust?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt#self-serve-offline-activation" target="_blank" rel="noopener">Rust SDK</a></li>
+            <li><span>Every launch after that verifies the file locally, with no network</span><a href="https://docs.authforge.cc/features/offline-license-files?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt" target="_blank" rel="noopener">Offline files</a></li>
+          </ol>
+          <p class="code-cap"><span>the licensing code, in short</span><span>rust</span></p>
+<pre class="code"><code><span class="tok-k">if</span> client.<span class="tok-f">login_from_file</span>(LICENSE_PATH).<span class="tok-f">is_err</span>() {
+    <span class="tok-c">// No file yet, or it's for other hardware: ask for the key and activate once.</span>
+    <span class="tok-k">let</span> key = <span class="tok-f">prompt_for_key</span>();
+    client.<span class="tok-f">activate_offline</span>(&amp;key, <span class="tok-n">Some</span>(Path::<span class="tok-f">new</span>(LICENSE_PATH)))?;
+}</code></pre>
+          <ul class="doc-links">
+            <li><a href="https://docs.authforge.cc/guides/sell-offline-apps?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt" target="_blank" rel="noopener">Sell offline apps: the end-to-end guide, exactly this setup <span>guide &#8599;</span></a></li>
+            <li><a href="https://docs.authforge.cc/features/commerce?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt" target="_blank" rel="noopener">Commerce: Stripe keys in, licenses out <span>feature &#8599;</span></a></li>
+            <li><a href="https://docs.authforge.cc/guides/stripe?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt" target="_blank" rel="noopener">Custom Stripe webhooks, if you'd rather host one <span>guide &#8599;</span></a></li>
+            <li><a href="https://docs.authforge.cc/best-practices/offline-licensing?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt" target="_blank" rel="noopener">Offline licensing best practices <span>docs &#8599;</span></a></li>
+            <li><a href="https://docs.authforge.cc/sdk/overview?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt" target="_blank" rel="noopener">SDKs for Rust, Python, C#, C++, Go and Node <span>docs &#8599;</span></a></li>
+            <li><a href="https://github.com/RAZKOM/Tapt" target="_blank" rel="noopener">Tapt's source, wired into a real Tauri app <span>gpl-3.0 &#8599;</span></a></li>
+          </ul>
+          <div class="af-ctas" style="margin-top:20px">
+            <a class="btn btn-sm btn-af" href="https://authforge.cc/?ref=razkom&amp;utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=tapt&amp;utm_content=built-with" target="_blank" rel="noopener">Sell your app with AuthForge <span class="arrow">&#8599;</span></a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
+      <section class="block">
+        <h2 class="block-label"><span class="n">05</span>spec</h2>
+        <table class="spec"><tbody>
+          <tr><td>platform</td><td>Windows 10 and 11, x64</td></tr>
+          <tr><td>install size</td><td>~5 MB</td></tr>
+          <tr><td>stack</td><td>Rust + Tauri, native overlay</td></tr>
+          <tr><td>capture</td><td>Visible in OBS and screen recording</td></tr>
+          <tr><td>activation</td><td>License key, online once, then offline</td></tr>
+          <tr><td>privacy</td><td>Your keystrokes never leave the machine</td></tr>
+          <tr><td>updates</td><td>Tapt tells you when a new version is out</td></tr>
+          <tr><td>source</td><td><a href="https://github.com/RAZKOM/Tapt" target="_blank" rel="noopener">github.com/RAZKOM/Tapt</a> (GPL-3.0)</td></tr>
+          <tr><td>support</td><td><a href="mailto:hello@razkom.com">hello@razkom.com</a></td></tr>
+        </tbody></table>
+      </section>
+    </div>
   </main>
 
-  <footer class="term-footer">
+  <footer class="site-foot">
     <div class="wrap">
-      <div class="left">
-        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
-        <span>echo "&copy; 2026 RAZKOM"</span>
-      </div>
-      <div class="right">
-        <a href="/">razkom.com</a>
-        <span class="sep">//</span>
-        <a href="https://authforge.cc" target="_blank" rel="noopener">licensed via authforge</a>
-      </div>
+      <img src="/assets/avatar.svg" alt="" width="22" height="22" />
+      <span>&copy; 2026 RAZKOM</span>
+      <a href="/">razkom.com</a>
+      <a href="mailto:hello@razkom.com">hello@razkom.com</a>
+      <span class="right">press <kbd>`</kbd> for the shell</span>
     </div>
   </footer>
 </body>
