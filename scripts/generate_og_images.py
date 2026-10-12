@@ -1,298 +1,238 @@
 #!/usr/bin/env python3
 """
-Generate terminal-themed Open Graph images for site pages.
+Generate the Open Graph images (1200x630) in the site's style.
 
 Usage:
-  python scripts/generate_og_images.py
+  python scripts/generate_og_images.py [FONT_DIR]
+
+FONT_DIR may hold JetBrainsMono.ttf and Inter.ttf (the variable fonts from
+github.com/google/fonts). Without them the script falls back to Consolas and
+Segoe UI, which look close but not identical to the site.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import re
+import sys
+from dataclasses import dataclass, field
 from pathlib import Path
-import textwrap
 
 try:
     from PIL import Image, ImageDraw, ImageFont
 except ImportError as exc:
-    raise SystemExit(
-        "Pillow is required. Install it with: python -m pip install pillow"
-    ) from exc
+    raise SystemExit("Pillow is required. Install it with: python -m pip install pillow") from exc
 
 
-WIDTH = 1200
-HEIGHT = 630
+WIDTH, HEIGHT = 1200, 630
+PAD = 72
 
-BG = "#0d1117"
-BG_2 = "#161b22"
-BORDER = "#30363d"
-INK = "#c9d1d9"
-INK_2 = "#a0a0b0"
-GREEN = "#7ee787"
-BLUE = "#58a6ff"
+BG = "#0c0c0e"
+BG_2 = "#131316"
+LINE = "#26262c"
+INK = "#ececee"
+INK_2 = "#a3a3ab"
+INK_3 = "#6e6e78"
+RED = "#ff5f56"
+AF = "#5cb88a"
 
 
 @dataclass(frozen=True)
-class OgCard:
+class Card:
     filename: str
     name: str
-    description: str
-    accent: str
-    path_hint: str
-    logo_path: str | None = None
-    is_home: bool = False
+    tagline: str
+    path: str = ""
+    accent: str = RED
+    logo: str | None = None
+    chips: list[tuple[str, str]] = field(default_factory=list)  # (text, colour)
 
 
 CARDS = [
-    OgCard(
+    Card(
         filename="home.png",
         name="RAZKOM",
-        description="Small independent software studio. Focused tools for Windows.",
-        accent="#58a6ff",
-        path_hint="~",
-        is_home=True,
+        tagline="Small tools. Native binaries. One thing well.",
+        chips=[("authforge", AF), ("5 apps", INK_2), ("6 sdks", INK_2), ("g2-kit", INK_2), ("never subscriptions", RED)],
     ),
-    OgCard(
+    Card(
         filename="tapt.png",
         name="Tapt",
-        description="Live keypress overlay for streamers and screencasters. One-time license, no subscription.",
+        path="tapt",
         accent="#1ea5c2",
-        path_hint="~/tapt",
-        logo_path="assets/icons/tapt.png",
+        logo="assets/brands/tapt.png",
+        tagline="See every keystroke. Live, on screen, on stream. A keyboard overlay for Windows.",
+        chips=[("$2.99 once", RED), ("windows", INK_2), ("rust", INK_2), ("licensed with authforge", AF)],
     ),
-    OgCard(
-        filename="authforge.png",
-        name="AuthForge",
-        description="Issue keys, bind to hardware, run heartbeats, and verify Ed25519-signed responses.",
-        accent="#2d8a5f",
-        path_hint="~/authforge",
-        logo_path="assets/brands/authforge.png",
-    ),
-    OgCard(
+    Card(
         filename="blindspot.png",
         name="BlindSpot",
-        description="Draw redaction boxes over any app window and keep them in place while windows move.",
+        path="blindspot",
         accent="#ef4444",
-        path_hint="~/blindspot",
-        logo_path="assets/icons/blindspot.png",
+        logo="assets/brands/blindspot.png",
+        tagline="Redaction boxes that stick to a window as it moves and resizes. Screen share without the panic.",
+        chips=[("free", INK_2), ("windows", INK_2), ("rust", INK_2), ("mit", INK_2)],
     ),
-    OgCard(
+    Card(
         filename="filelens.png",
         name="FileLens",
-        description="Right-click files to inspect hashes, strings, hex, and PE metadata in one popup.",
+        path="filelens",
         accent="#d65a1f",
-        path_hint="~/filelens",
-        logo_path="assets/icons/filelens.png",
+        logo="assets/icons/filelens.png",
+        tagline="Right-click any file for hashes, strings, hex, PE internals and metadata.",
+        chips=[("free", INK_2), ("windows", INK_2), ("rust", INK_2), ("mit", INK_2)],
     ),
-    OgCard(
+    Card(
+        filename="jsdecloak.png",
+        name="JSDecloak",
+        path="jsdecloak",
+        accent="#f99e42",
+        logo="assets/brands/jsdecloak.png",
+        tagline="Untangle obfuscated JavaScript in your browser. Beautify, deobfuscate, rename with scope awareness.",
+        chips=[("free", INK_2), ("web", INK_2), ("typescript", INK_2), ("mit", INK_2)],
+    ),
+    Card(
         filename="tape.png",
         name="Tape",
-        description="Pin timestamped notes to a waveform and share the review as a URL. Audio stays local.",
+        path="tape",
         accent="#e86d2d",
-        path_hint="~/tape",
-        logo_path="assets/icons/tape.png",
+        logo="assets/brands/tape.png",
+        tagline="Pin timestamped notes to a waveform and share the review as a link. Audio stays on your device.",
+        chips=[("free", INK_2), ("web", INK_2), ("mit", INK_2)],
     ),
 ]
 
 
-def _load_font(size: int, monospace: bool = False) -> ImageFont.ImageFont:
-    candidates = (
-        ["C:/Windows/Fonts/consola.ttf", "C:/Windows/Fonts/cascadiamono.ttf"]
-        if monospace
-        else ["C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"]
-    )
-    for candidate in candidates:
-        try:
-            return ImageFont.truetype(candidate, size=size)
-        except OSError:
-            continue
-    return ImageFont.load_default()
+class Fonts:
+    def __init__(self, font_dir: Path | None) -> None:
+        self.font_dir = font_dir
+
+    def mono(self, size: int, weight: int = 400) -> ImageFont.FreeTypeFont:
+        return self._load("JetBrainsMono.ttf", ["C:/Windows/Fonts/consolab.ttf" if weight >= 600 else "C:/Windows/Fonts/consola.ttf"], size, [weight])
+
+    def sans(self, size: int, weight: int = 400) -> ImageFont.FreeTypeFont:
+        return self._load("Inter.ttf", ["C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf"], size, [min(max(size, 14), 32), weight])
+
+    def _load(self, name, fallbacks, size, axes):
+        if self.font_dir and (self.font_dir / name).exists():
+            font = ImageFont.truetype(str(self.font_dir / name), size)
+            try:
+                font.set_variation_by_axes(axes)
+            except OSError:
+                pass
+            return font
+        for candidate in fallbacks:
+            try:
+                return ImageFont.truetype(candidate, size)
+            except OSError:
+                continue
+        return ImageFont.load_default()
 
 
-def _draw_vertical_gradient(image: Image.Image, top: str, bottom: str) -> None:
-    draw = ImageDraw.Draw(image)
-    top_rgb = tuple(int(top[i : i + 2], 16) for i in (1, 3, 5))
-    bot_rgb = tuple(int(bottom[i : i + 2], 16) for i in (1, 3, 5))
-    for y in range(image.height):
-        t = y / max(1, image.height - 1)
-        color = tuple(int(top_rgb[i] + (bot_rgb[i] - top_rgb[i]) * t) for i in range(3))
-        draw.line([(0, y), (image.width, y)], fill=color)
-
-
-def _wrap_lines(text: str, width: int) -> list[str]:
-    return textwrap.wrap(text, width=width, break_long_words=False, break_on_hyphens=False)
-
-
-def _paste_logo(
-    img: Image.Image,
-    root: Path,
-    logo_path: str | None,
-    left: int,
-    top: int,
-    box_size: int,
-    accent: str,
-) -> None:
+def render_avatar(root: Path, size: int, radius: int) -> Image.Image:
+    """Rasterise the pixel-grid avatar.svg crisply, with rounded corners."""
+    src = (root / "assets" / "avatar.svg").read_text(encoding="utf-8")
+    scale = size / 100.0
+    rects = re.findall(r'<rect ([^>]*)/>', src)
+    attrs = [dict(re.findall(r'(\w+)="([^"]*)"', r)) for r in rects]
+    img = Image.new("RGBA", (size, size), attrs[0]["fill"])
     draw = ImageDraw.Draw(img)
-    draw.rounded_rectangle(
-        [left, top, left + box_size, top + box_size],
-        radius=16,
-        fill="#202833",
-        outline=BORDER,
-        width=1,
-    )
-
-    if not logo_path:
-        return
-
-    logo_file = root / logo_path
-    if logo_file.suffix.lower() == ".svg":
-        # PIL does not natively decode SVG on most setups; fallback glyph.
-        fallback_font = _load_font(38, monospace=True)
-        draw.text((left + 30, top + 23), "AF", fill=accent, font=fallback_font)
-        return
-
-    try:
-        logo = Image.open(logo_file).convert("RGBA")
-    except (OSError, FileNotFoundError):
-        return
+    fill = re.search(r'<g fill="([^"]+)"', src).group(1)
+    for a in attrs[1:]:
+        x, y = float(a["x"]), float(a["y"])
+        w, h = round(float(a["width"]), 1), round(float(a["height"]), 1)
+        draw.rectangle((round(x * scale), round(y * scale), round((x + w) * scale) - 1, round((y + h) * scale) - 1), fill=fill)
+    mask = Image.new("L", (size * 4, size * 4), 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, size * 4 - 1, size * 4 - 1), radius=radius * 4, fill=255)
+    img.putalpha(mask.resize((size, size), Image.LANCZOS))
+    return img
 
 
-    inset = 10
-    target_size = box_size - (inset * 2)
-    logo.thumbnail((target_size, target_size), Image.Resampling.LANCZOS)
-    px = left + (box_size - logo.width) // 2
-    py = top + (box_size - logo.height) // 2
-    img.paste(logo, (px, py), logo)
+def wrap(draw: ImageDraw.ImageDraw, text: str, font, max_width: int) -> list[str]:
+    lines, line = [], ""
+    for word in text.split():
+        trial = f"{line} {word}".strip()
+        if draw.textlength(trial, font=font) <= max_width:
+            line = trial
+        else:
+            lines.append(line)
+            line = word
+    if line:
+        lines.append(line)
+    return lines
 
 
-def _render_home(card: OgCard, draw: ImageDraw.ImageDraw, content_x: int, content_y: int, mono: ImageFont.ImageFont) -> None:
-    draw.text(
-        (content_x, content_y),
-        f"user@razkom.com:{card.path_hint}$",
-        fill=GREEN,
-        font=mono,
-    )
-    draw.text((content_x + 338, content_y), "cat brand.txt", fill=BLUE, font=mono)
-
-    ascii_art = [
-        "██████╗  █████╗ ███████╗██╗  ██╗ ██████╗ ███╗   ███╗",
-        "██╔══██╗██╔══██╗╚══███╔╝██║ ██╔╝██╔═══██╗████╗ ████║",
-        "██████╔╝███████║  ███╔╝ █████╔╝ ██║   ██║██╔████╔██║",
-        "██╔══██╗██╔══██║ ███╔╝  ██╔═██╗ ██║   ██║██║╚██╔╝██║",
-        "██║  ██║██║  ██║███████╗██║  ██╗╚██████╔╝██║ ╚═╝ ██║",
-        "╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝",
-    ]
-    ascii_y = content_y + 60
-    ascii_line_height = mono.getbbox("M")[3] - mono.getbbox("M")[1]
-    for i, line in enumerate(ascii_art):
-        draw.text((content_x, ascii_y + (i * ascii_line_height)), line, fill="#ff5f56", font=mono)
-
-    draw.text(
-        (content_x, ascii_y + (len(ascii_art) * ascii_line_height) + 16),
-        "> small tools. native binaries. one thing well.",
-        fill=INK_2,
-        font=mono,
-    )
+def draw_chips(draw: ImageDraw.ImageDraw, chips, x: int, y: int, font) -> None:
+    for text, colour in chips:
+        w = int(draw.textlength(text, font=font)) + 32
+        border = colour if colour != INK_2 else LINE
+        draw.rounded_rectangle((x, y, x + w, y + 44), radius=22, outline=border, width=2)
+        draw.text((x + 16, y + 22), text, fill=colour, font=font, anchor="lm")
+        x += w + 10
 
 
-def _render_app(
-    card: OgCard,
-    root: Path,
-    img: Image.Image,
-    draw: ImageDraw.ImageDraw,
-    content_x: int,
-    content_y: int,
-    mono: ImageFont.ImageFont,
-    sans_title: ImageFont.ImageFont,
-    sans_body: ImageFont.ImageFont,
-) -> None:
-    draw.text(
-        (content_x, content_y),
-        f"user@razkom.com:{card.path_hint}$",
-        fill=GREEN,
-        font=mono,
-    )
-    draw.text((content_x + 338, content_y), "open --preview", fill=BLUE, font=mono)
-
-    logo_box_size = 100
-    logo_y = content_y + 62
-    _paste_logo(img, root, card.logo_path, content_x, logo_y, logo_box_size, card.accent)
-
-    title_x = content_x + logo_box_size + 24
-    title_center_y = logo_y + (logo_box_size // 2)
-    draw.text((title_x, title_center_y), card.name, fill=INK, font=sans_title, anchor="lm")
-    title_width = draw.textlength(card.name, font=sans_title)
-    draw.text(
-        (title_x + int(title_width) + 4, title_center_y),
-        ".",
-        fill=card.accent,
-        font=sans_title,
-        anchor="lm",
-    )
-
-    body_y = logo_y + logo_box_size + 28
-    for i, line in enumerate(_wrap_lines(card.description, 66)):
-        draw.text((content_x, body_y + i * 38), line, fill=INK_2, font=sans_body)
-
-
-def render_card(card: OgCard, out_dir: Path, root: Path) -> None:
-    img = Image.new("RGB", (WIDTH, HEIGHT), BG)
-    _draw_vertical_gradient(img, "#0d1117", "#101723")
+def render(card: Card, root: Path, fonts: Fonts, out_dir: Path) -> None:
+    img = Image.new("RGBA", (WIDTH, HEIGHT), BG)
     draw = ImageDraw.Draw(img)
 
-    sans_title = _load_font(70)
-    sans_body = _load_font(28)
-    mono = _load_font(24, monospace=True)
-    mono_small = _load_font(20, monospace=True)
+    # Subtle panel + accent rule.
+    draw.rounded_rectangle((28, 28, WIDTH - 28, HEIGHT - 28), radius=28, fill=BG_2, outline="#1d1d22", width=2)
+    draw.rectangle((PAD, 28, PAD + 120, 34), fill=card.accent)
 
-    pad = 52
-    shell_x = pad
-    shell_y = 64
-    shell_w = WIDTH - (pad * 2)
-    shell_h = HEIGHT - 128
+    chip_font = fonts.mono(22, 500)
+    url = "razkom.com" + (f"/{card.path}" if card.path else "")
+    url_font = fonts.mono(26, 500)
 
-    draw.rounded_rectangle(
-        [shell_x, shell_y, shell_x + shell_w, shell_y + shell_h],
-        radius=16,
-        fill=BG_2,
-        outline=BORDER,
-        width=2,
-    )
+    if card.path:
+        # Brand row: avatar + RAZKOM / path
+        img.alpha_composite(render_avatar(root, 52, 12), (PAD, 70))
+        brand_font = fonts.mono(28, 700)
+        draw.text((PAD + 68, 96), "RAZKOM", fill=INK, font=brand_font, anchor="lm")
+        bw = draw.textlength("RAZKOM", font=brand_font)
+        draw.text((PAD + 68 + bw + 10, 96), f"/{card.path}", fill=INK_3, font=fonts.mono(28, 400), anchor="lm")
 
-    header_h = 44
-    draw.rectangle(
-        [shell_x, shell_y, shell_x + shell_w, shell_y + header_h],
-        fill="#1c2129",
-        outline=BORDER,
-        width=1,
-    )
-    draw.ellipse((shell_x + 16, shell_y + 14, shell_x + 28, shell_y + 26), fill="#ff5f56")
-    draw.ellipse((shell_x + 34, shell_y + 14, shell_x + 46, shell_y + 26), fill="#ffbd2e")
-    draw.ellipse((shell_x + 52, shell_y + 14, shell_x + 64, shell_y + 26), fill="#27c93f")
-    draw.text((shell_x + 84, shell_y + 12), "user@razkom.com", fill=INK_2, font=mono_small)
+        # Icon + name
+        top = 182
+        icon_size = 128
+        if card.logo:
+            logo = Image.open(root / card.logo).convert("RGBA")
+            bbox = logo.getbbox()
+            if bbox:
+                logo = logo.crop(bbox)
+            logo.thumbnail((icon_size, icon_size), Image.LANCZOS)
+            img.alpha_composite(logo, (PAD + (icon_size - logo.width) // 2, top + (icon_size - logo.height) // 2))
+        title_font = fonts.mono(96, 700)
+        draw.text((PAD + icon_size + 36, top + icon_size // 2), card.name, fill=INK, font=title_font, anchor="lm")
 
-    content_x = shell_x + 36
-    content_y = shell_y + header_h + 28
-    if card.is_home:
-        _render_home(card, draw, content_x, content_y, mono)
+        body_font = fonts.sans(34, 400)
+        for i, line in enumerate(wrap(draw, card.tagline, body_font, WIDTH - PAD * 2 - 40)[:2]):
+            draw.text((PAD, 360 + i * 48), line, fill=INK_2, font=body_font)
     else:
-        _render_app(card, root, img, draw, content_x, content_y, mono, sans_title, sans_body)
+        size = 300
+        img.alpha_composite(render_avatar(root, size, 44), (PAD, 120))
+        x = PAD + size + 56
+        draw.text((x, 150), card.name, fill=INK, font=fonts.mono(104, 700))
+        draw.text((x, 284), "one-person software studio", fill=RED, font=fonts.mono(32, 500))
+        body_font = fonts.sans(34, 400)
+        for i, line in enumerate(wrap(draw, card.tagline, body_font, WIDTH - x - PAD)[:2]):
+            draw.text((x, 350 + i * 48), line, fill=INK_2, font=body_font)
 
-    footer = f"> razkom.com/{card.path_hint.strip('~/')}" if card.path_hint != "~" else "> razkom.com"
-    draw.text((content_x, shell_y + shell_h - 58), footer, fill=card.accent, font=mono)
+    # Footer: chips left, URL right.
+    draw_chips(draw, card.chips, PAD, 506, chip_font)
+    draw.text((WIDTH - PAD, 528), url, fill=RED, font=url_font, anchor="rm")
 
-    out_path = out_dir / card.filename
-    img.save(out_path, format="PNG", optimize=True)
-    print(f"generated {out_path.as_posix()}")
+    out = out_dir / card.filename
+    img.convert("RGB").save(out, format="PNG", optimize=True)
+    print(f"generated {out.as_posix()}")
 
 
 def main() -> None:
     root = Path(__file__).resolve().parent.parent
+    font_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else None
     out_dir = root / "assets" / "og"
     out_dir.mkdir(parents=True, exist_ok=True)
-
+    fonts = Fonts(font_dir)
     for card in CARDS:
-        render_card(card, out_dir, root)
+        render(card, root, fonts, out_dir)
 
 
 if __name__ == "__main__":
