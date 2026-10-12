@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0d1117" />
-  <title>RAZKOM — software studio</title>
-  <meta name="description" content="RAZKOM is a small independent software studio. We make focused tools: Tapt, BlindSpot, FileLens, JSDecloak, Tape, and AuthForge." />
+  <meta name="theme-color" content="#0c0c0e" />
+  <title>RAZKOM — AuthForge, apps and packages</title>
+  <meta name="description" content="RAZKOM is a one-person software studio. Home of AuthForge, the licensing API for desktop software, plus Tapt, BlindSpot, FileLens, JSDecloak, Tape, the AuthForge SDKs and g2-kit." />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
   <link rel="canonical" href="https://razkom.com/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="RAZKOM — software studio" />
-  <meta property="og:description" content="A small independent studio making focused tools for Windows." />
+  <meta property="og:title" content="RAZKOM — AuthForge, apps and packages" />
+  <meta property="og:description" content="A one-person studio: the AuthForge licensing API, the apps built on it, and the packages behind them." />
   <meta property="og:url" content="https://razkom.com/" />
   <meta property="og:image" content="https://razkom.com/assets/og/home.png" />
   <meta property="og:image:width" content="1200" />
@@ -21,141 +22,255 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="/assets/site.js" defer></script>
 </head>
-<body class="theme-home">
-  <header class="term-nav">
+<body>
+  <header class="site-head">
     <div class="wrap">
-      <div class="term-nav-left">
-        <a href="/" class="term-brand" aria-label="RAZKOM home">
-          RAZKOM
-        </a>
-      </div>
-      <nav class="term-nav-links" aria-label="Primary">
-        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      <a class="brand" href="/" aria-label="RAZKOM home"><img src="/assets/avatar.svg" alt="" width="28" height="28" />RAZKOM</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#authforge">authforge</a>
+        <a href="#apps">apps</a>
+        <a href="#packages">packages</a>
+        <button type="button" class="shell-btn" id="open-shell" aria-label="Open the RAZKOM shell"><kbd>`</kbd><span class="label">shell</span></button>
+        <a class="gh-link keep" href="https://github.com/RAZKOM" target="_blank" rel="noopener" aria-label="RAZKOM on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <div class="wrap-narrow term-session">
-
-      <div class="term-shell" id="term-shell">
-        <div class="term-shell-history" id="term-shell-history" aria-live="polite" aria-relevant="additions"></div>
-        <label class="cmd term-shell-line" for="term-shell-input">
-          <span class="prompt"><span class="user">user</span><span class="at">@</span><span class="host">razkom.com</span><span class="colon">:</span><span class="tilde">~</span><span class="dollar">$</span></span>
-          <input type="text" class="term-shell-input" id="term-shell-input" maxlength="200"
-            enterkeyhint="go" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-            aria-label="Terminal command line" />
-            <span class="arrow" >&rarr;</span>
-        </label>
+  <main class="layout">
+    <aside class="side">
+      <img class="side-avatar" src="/assets/avatar.svg" alt="RAZKOM avatar: RAZ over KOM in pixel letters on red" width="248" height="248" />
+      <h1 class="side-name">RAZKOM</h1>
+      <p class="side-tag">one-person software studio</p>
+      <p class="side-bio">Small native tools, mostly free and open source. The paid ones cost a few dollars, once.</p>
+      <ul class="side-links">
+        <li><a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github</a></li>
+        <li><a href="https://ko-fi.com/razkom" target="_blank" rel="noopener">ko-fi</a></li>
+        <li><a href="mailto:hello@razkom.com">hello@razkom.com</a></li>
+      </ul>
+      <div class="chips">
+        <span class="chip chip-red">open source</span><span class="chip">no subscriptions</span><span class="chip">no telemetry</span>
       </div>
+    </aside>
 
-      <div class="term-intro" id="term-intro-templates" hidden>
-        <div class="term-segment">
-          <div class="cmd">
-            <span class="prompt"><span class="user">user</span><span class="at">@</span><span class="host">razkom.com</span><span class="colon">:</span><span class="tilde">~</span><span class="dollar">$</span></span><span class="input">whoami</span>
-          </div>
-          <div class="term-stdout">
-            <div class="out"><span class="gt">&gt;</span>RAZKOM <span class="comment">// a one-person software studio</span></div>
-            <div class="out"><span class="gt">&gt;</span>est. 2026 <span class="comment">// windows tools</span></div>
+    <div class="content">
+      <p class="lead">Small tools. Native binaries. One thing well.</p>
+      <p class="lead-sub">Some free, some paid, never subscriptions. If it helps you, that's the goal.</p>
 
-<pre class="ascii-art" aria-hidden="true">
-██████╗  █████╗ ███████╗██╗  ██╗ ██████╗ ███╗   ███╗
-██╔══██╗██╔══██╗╚══███╔╝██║ ██╔╝██╔═══██╗████╗ ████║
-██████╔╝███████║  ███╔╝ █████╔╝ ██║   ██║██╔████╔██║
-██╔══██╗██╔══██║ ███╔╝  ██╔═██╗ ██║   ██║██║╚██╔╝██║
-██║  ██║██║  ██║███████╗██║  ██╗╚██████╔╝██║ ╚═╝ ██║
-╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝</pre>
-          </div>
-        </div>
-
-        <div class="term-segment">
-          <div class="cmd">
-            <span class="prompt"><span class="user">user</span><span class="at">@</span><span class="host">razkom.com</span><span class="colon">:</span><span class="tilde">~</span><span class="dollar">$</span></span><span class="input">cat manifesto.txt</span>
-          </div>
-          <div class="term-stdout">
-            <div class="manifesto">
-              <div>Small tools. Native binaries. One thing well.</div>
-              <div>Some free, some paid. <span class="never">Never subscriptions.</span></div>
-              <div>If it helps you, that's the goal.</div>
+      <section class="block" id="authforge">
+        <h2 class="block-label"><span class="n">01</span>authforge</h2>
+        <article class="af-card">
+          <div class="af-card-grid">
+            <div class="af-card-main">
+              <div class="af-card-top">
+                <img src="/assets/icons/authforge.svg" alt="" width="34" height="34" />
+                <h3>AuthForge</h3>
+                <span class="chip chip-af">saas</span>
+              </div>
+              <p>The licensing API behind my paid apps. Issue keys, bind them to hardware, verify signed responses, and sell through Stripe without running a server.</p>
+              <ul class="af-points">
+                <li>Hardware-bound keys</li>
+                <li>Ed25519-signed responses</li>
+                <li>Offline license files</li>
+                <li>Stripe &amp; Lemon Squeezy</li>
+              </ul>
+              <div class="af-ctas">
+                <a class="btn btn-sm btn-af" href="https://authforge.cc/?ref=razkom&amp;utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=card" target="_blank" rel="noopener">authforge.cc <span class="arrow">&#8599;</span></a>
+                <a class="btn btn-sm" href="https://docs.authforge.cc/?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=card" target="_blank" rel="noopener">Docs</a>
+                <a class="btn btn-sm" href="#packages">SDKs <span class="arrow">&darr;</span></a>
+              </div>
+            </div>
+            <div class="af-card-demo">
+              <div class="lic" data-license-demo>
+                <div class="lic-bar"><i></i><i></i><i></i><span>your-app.exe</span></div>
+                <div class="lic-body">
+                  <div class="lic-head"><b>Activate your license</b><span>What your users see. Try it.</span></div>
+                  <div>
+                    <label for="lic-key">License key</label>
+                    <input id="lic-key" class="lic-input" type="text" autocomplete="off" spellcheck="false" />
+                  </div>
+                  <div class="lic-actions">
+                    <button type="button" class="lic-go">Verify license</button>
+                    <button type="button" class="lic-buy">Buy</button>
+                  </div>
+                  <div class="lic-status" hidden aria-live="polite"><span class="lic-badge"></span><p></p></div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div class="term-segment">
-          <div class="cmd">
-            <span class="prompt"><span class="user">user</span><span class="at">@</span><span class="host">razkom.com</span><span class="colon">:</span><span class="tilde">~</span><span class="dollar">$</span></span><span class="input">showapps</span>
+          <div class="af-card-foot">
+            <img src="/assets/icons/tapt.png" alt="" width="18" height="18" />
+            <span>In production: <a href="/tapt/">Tapt</a>, $2.99 lifetime, offline after one activation</span>
+            <a class="go" href="/tapt/#built-with-authforge">how it's built &rarr;</a>
           </div>
-          <div class="term-stdout">
-            <div class="out"><span class="comment">// total 6 // sorted by ship_date</span></div>
+        </article>
+      </section>
 
-            <div class="apps-list">
-              <a href="/tapt/" class="app-row app-row--tapt">
-                <span class="marker">&#9656;</span>
-                <span class="name">tapt<span class="desc">// keyboard overlay for streamers + screencasters</span></span>
-                <span class="tag paid">[paid&middot;oss]</span>
-                <span class="price">$2.99</span>
-                <span class="arrow">&rarr;</span>
-              </a>
-              <a href="/authforge/" class="app-row app-row--authforge">
-                <span class="marker">&#9656;</span>
-                <span class="name">authforge<span class="desc">// software licensing API with hardware binding</span></span>
-                <span class="tag saas">[saas]</span>
-                <span class="price">api</span>
-                <span class="arrow">&rarr;</span>
-              </a>
-              <a href="/blindspot/" class="app-row app-row--blindspot">
-                <span class="marker">&#9656;</span>
-                <span class="name">blindspot<span class="desc">// redaction overlays that stick to windows</span></span>
-                <span class="tag oss">[free&middot;oss]</span>
-                <span class="price">MIT</span>
-                <span class="arrow">&rarr;</span>
-              </a>
-              <a href="/filelens/" class="app-row app-row--filelens">
-                <span class="marker">&#9656;</span>
-                <span class="name">filelens<span class="desc">// right-click file inspector for windows</span></span>
-                <span class="tag oss">[free&middot;oss]</span>
-                <span class="price">MIT</span>
-                <span class="arrow">&rarr;</span>
-              </a>
-              <a href="/jsdecloak/" class="app-row app-row--jsdecloak">
-                <span class="marker">&#9656;</span>
-                <span class="name">jsdecloak<span class="desc">// browser workbench for obfuscated javascript</span></span>
-                <span class="tag oss">[free&middot;oss]</span>
-                <span class="price">MIT</span>
-                <span class="arrow">&rarr;</span>
-              </a>
-              <a href="/tape/" class="app-row app-row--tape">
-                <span class="marker">&#9656;</span>
-                <span class="name">tape<span class="desc">// timestamped music reviews in a url</span></span>
-                <span class="tag oss">[free&middot;oss]</span>
-                <span class="price">MIT</span>
-                <span class="arrow">&rarr;</span>
-              </a>
+      <section class="block" id="apps">
+        <h2 class="block-label"><span class="n">02</span>apps</h2>
+      <div class="apps">
+        <article class="app app-feature">
+          <div class="app-media"><video src="/assets/tapt-demo-compressed.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
+          <div class="app-body">
+            <div class="app-top">
+              <img src="/assets/icons/tapt.png" alt="" width="26" height="26" />
+              <h3><a class="app-link" href="/tapt/">Tapt</a></h3>
+              <span class="price paid">$2.99 once</span>
             </div>
+            <p>Shows the keys you press, live, on top of everything. For streamers, screencasters and tutorial makers. Free 1-hour trial built in.</p>
+            <div class="chips">
+              <span class="chip">windows</span><span class="chip">rust</span><span class="chip">gpl-3.0</span>
+              <a class="chip chip-af" href="/tapt/#built-with-authforge">licensed with authforge</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app-media"><video src="/assets/blindspot-demo-compressed.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
+          <div class="app-body">
+            <div class="app-top">
+              <img src="/assets/brands/blindspot.png" alt="" width="26" height="26" />
+              <h3><a class="app-link" href="/blindspot/">BlindSpot</a></h3>
+              <span class="price">free</span>
+            </div>
+            <p>Redaction boxes that stick to a window as it moves and resizes.</p>
+            <div class="chips"><span class="chip">windows</span><span class="chip">rust</span><span class="chip">mit</span></div>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app-media"><video src="/assets/filelens-demo-compressed.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
+          <div class="app-body">
+            <div class="app-top">
+              <img src="/assets/icons/filelens.png" alt="" width="26" height="26" />
+              <h3><a class="app-link" href="/filelens/">FileLens</a></h3>
+              <span class="price">free</span>
+            </div>
+            <p>Right-click any file for hashes, strings, hex and PE internals.</p>
+            <div class="chips"><span class="chip">windows</span><span class="chip">rust</span><span class="chip">mit</span></div>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app-media"><video src="/assets/jsdecloak-demo-compressed.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
+          <div class="app-body">
+            <div class="app-top">
+              <img src="/assets/brands/jsdecloak.svg" alt="" width="26" height="26" />
+              <h3><a class="app-link" href="/jsdecloak/">JSDecloak</a></h3>
+              <span class="price">free</span>
+            </div>
+            <p>A browser workbench for obfuscated JavaScript.</p>
+            <div class="chips"><span class="chip">web</span><span class="chip">typescript</span><span class="chip">mit</span></div>
+          </div>
+        </article>
+
+        <article class="app">
+          <div class="app-media"><video src="/assets/tape-demo-compressed.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video></div>
+          <div class="app-body">
+            <div class="app-top">
+              <img src="/assets/brands/tape.png" alt="" width="26" height="26" />
+              <h3><a class="app-link" href="/tape/">Tape</a></h3>
+              <span class="price">free</span>
+            </div>
+            <p>Timestamped notes on a waveform, shared as a link.</p>
+            <div class="chips"><span class="chip">web</span><span class="chip">html</span><span class="chip">mit</span></div>
+          </div>
+        </article>
+      </div>
+      </section>
+
+      <section class="block" id="packages">
+        <h2 class="block-label"><span class="n">03</span>packages</h2>
+      <div class="pkg-group">
+        <div class="pkg-group-head">
+          <h3>AuthForge SDKs</h3>
+          <p>Six languages, same API, released together.</p>
+          <a href="https://github.com/AuthForgeCC" target="_blank" rel="noopener">github.com/AuthForgeCC &#8599;</a>
+        </div>
+        <div class="pkgs">
+          <div class="pkg">
+            <span class="pkg-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/nodedotjs.svg" alt="" width="18" height="18" loading="lazy" /></span>
+            <div class="pkg-name"><b>@authforgecc/sdk</b><span>Node.js <img class="ver" src="https://img.shields.io/npm/v/%40authforgecc%2Fsdk?style=flat-square&amp;label=npm&amp;labelColor=1a1a1e&amp;color=2d8a5f" alt="npm version" height="18" loading="lazy" /></span></div>
+            <div class="cmd"><code>npm install @authforgecc/sdk</code><button type="button" class="copy" data-copy="npm install @authforgecc/sdk">copy</button></div>
+            <div class="pkg-links"><a href="https://docs.authforge.cc/sdk/node?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=packages" target="_blank" rel="noopener">docs</a><a href="https://github.com/AuthForgeCC/authforge-node" target="_blank" rel="noopener">repo</a><a href="https://www.npmjs.com/package/@authforgecc/sdk" target="_blank" rel="noopener">npm</a></div>
+          </div>
+          <div class="pkg">
+            <span class="pkg-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/python.svg" alt="" width="18" height="18" loading="lazy" /></span>
+            <div class="pkg-name"><b>authforge-sdk</b><span>Python <img class="ver" src="https://img.shields.io/pypi/v/authforge-sdk?style=flat-square&amp;label=pypi&amp;labelColor=1a1a1e&amp;color=2d8a5f" alt="PyPI version" height="18" loading="lazy" /></span></div>
+            <div class="cmd"><code>pip install authforge-sdk</code><button type="button" class="copy" data-copy="pip install authforge-sdk">copy</button></div>
+            <div class="pkg-links"><a href="https://docs.authforge.cc/sdk/python?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=packages" target="_blank" rel="noopener">docs</a><a href="https://github.com/AuthForgeCC/authforge-python" target="_blank" rel="noopener">repo</a><a href="https://pypi.org/project/authforge-sdk/" target="_blank" rel="noopener">pypi</a></div>
+          </div>
+          <div class="pkg">
+            <span class="pkg-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/rust.svg" alt="" width="18" height="18" loading="lazy" /></span>
+            <div class="pkg-name"><b>authforge</b><span>Rust <img class="ver" src="https://img.shields.io/crates/v/authforge?style=flat-square&amp;label=crates.io&amp;labelColor=1a1a1e&amp;color=2d8a5f" alt="crates.io version" height="18" loading="lazy" /></span></div>
+            <div class="cmd"><code>cargo add authforge</code><button type="button" class="copy" data-copy="cargo add authforge">copy</button></div>
+            <div class="pkg-links"><a href="https://docs.authforge.cc/sdk/rust?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=packages" target="_blank" rel="noopener">docs</a><a href="https://github.com/AuthForgeCC/authforge-rust" target="_blank" rel="noopener">repo</a><a href="https://crates.io/crates/authforge" target="_blank" rel="noopener">crates</a></div>
+          </div>
+          <div class="pkg">
+            <span class="pkg-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/dotnet.svg" alt="" width="18" height="18" loading="lazy" /></span>
+            <div class="pkg-name"><b>AuthForge</b><span>C# / .NET <img class="ver" src="https://img.shields.io/nuget/v/AuthForge?style=flat-square&amp;label=nuget&amp;labelColor=1a1a1e&amp;color=2d8a5f" alt="NuGet version" height="18" loading="lazy" /></span></div>
+            <div class="cmd"><code>dotnet add package AuthForge</code><button type="button" class="copy" data-copy="dotnet add package AuthForge">copy</button></div>
+            <div class="pkg-links"><a href="https://docs.authforge.cc/sdk/csharp?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=packages" target="_blank" rel="noopener">docs</a><a href="https://github.com/AuthForgeCC/authforge-csharp" target="_blank" rel="noopener">repo</a><a href="https://www.nuget.org/packages/AuthForge/" target="_blank" rel="noopener">nuget</a></div>
+          </div>
+          <div class="pkg">
+            <span class="pkg-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/go.svg" alt="" width="18" height="18" loading="lazy" /></span>
+            <div class="pkg-name"><b>authforge-go</b><span>Go <img class="ver" src="https://img.shields.io/github/v/tag/AuthForgeCC/authforge-go?style=flat-square&amp;label=go&amp;labelColor=1a1a1e&amp;color=2d8a5f" alt="Go module version" height="18" loading="lazy" /></span></div>
+            <div class="cmd"><code>go get github.com/AuthForgeCC/authforge-go@latest</code><button type="button" class="copy" data-copy="go get github.com/AuthForgeCC/authforge-go@latest">copy</button></div>
+            <div class="pkg-links"><a href="https://docs.authforge.cc/sdk/go?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=packages" target="_blank" rel="noopener">docs</a><a href="https://github.com/AuthForgeCC/authforge-go" target="_blank" rel="noopener">repo</a><a href="https://pkg.go.dev/github.com/AuthForgeCC/authforge-go" target="_blank" rel="noopener">pkg.go</a></div>
+          </div>
+          <div class="pkg">
+            <span class="pkg-logo"><img src="https://cdn.jsdelivr.net/npm/simple-icons@13.21.0/icons/cplusplus.svg" alt="" width="18" height="18" loading="lazy" /></span>
+            <div class="pkg-name"><b>authforge-cpp</b><span>C++ / CMake <img class="ver" src="https://img.shields.io/github/v/tag/AuthForgeCC/authforge-cpp?style=flat-square&amp;label=tag&amp;labelColor=1a1a1e&amp;color=2d8a5f" alt="C++ SDK version" height="18" loading="lazy" /></span></div>
+            <div class="cmd"><code>FetchContent_Declare(authforge_cpp GIT_REPOSITORY https://github.com/AuthForgeCC/authforge-cpp.git GIT_TAG v1.5.0)</code><button type="button" class="copy" data-copy="include(FetchContent)
+FetchContent_Declare(
+authforge_cpp
+GIT_REPOSITORY https://github.com/AuthForgeCC/authforge-cpp.git
+GIT_TAG v1.5.0
+)
+FetchContent_MakeAvailable(authforge_cpp)
+target_link_libraries(your_app PRIVATE authforge_sdk)">copy</button></div>
+            <div class="pkg-links"><a href="https://docs.authforge.cc/sdk/cpp?utm_source=razkom.com&amp;utm_medium=referral&amp;utm_campaign=home&amp;utm_content=packages" target="_blank" rel="noopener">docs</a><a href="https://github.com/AuthForgeCC/authforge-cpp" target="_blank" rel="noopener">repo</a></div>
           </div>
         </div>
       </div>
 
+      <div class="pkg-group">
+        <div class="pkg-group-head">
+          <h3>Libraries</h3>
+          <p>Standalone open-source packages.</p>
+        </div>
+        <article class="lib">
+          <a class="lib-media" href="https://razkom.github.io/g2-kit/" target="_blank" rel="noopener" aria-label="g2-kit live demo">
+            <img src="/assets/g2-kit-showcase.png" alt="A grid of g2-kit components in green: bar chart, line chart, KPI and gauge" width="1200" height="720" loading="lazy" />
+          </a>
+          <div class="lib-body">
+            <div class="lib-top">
+              <h4>g2-kit</h4>
+              <img class="ver" src="https://img.shields.io/npm/v/g2-kit?style=flat-square&amp;label=npm&amp;labelColor=1a1a1e&amp;color=ff5f56" alt="g2-kit npm version" height="18" loading="lazy" />
+              <span class="chip">typescript</span><span class="chip">mit</span>
+            </div>
+            <p>Drawn UI for Even Realities G2 smart-glasses plugins: 56 charts, controls, HUD chrome and game pieces the firmware doesn't provide, rendered on the phone into 4-bit greyscale tiles and pushed to the glasses.</p>
+            <div class="cmd"><code>npm install g2-kit</code><button type="button" class="copy" data-copy="npm install g2-kit">copy</button></div>
+            <div class="lib-actions">
+              <a class="btn btn-sm btn-red" href="https://razkom.github.io/g2-kit/" target="_blank" rel="noopener">Live demo <span class="arrow">&#8599;</span></a>
+              <a class="btn btn-sm" href="https://github.com/RAZKOM/g2-kit" target="_blank" rel="noopener">Source</a>
+              <a class="btn btn-sm" href="https://www.npmjs.com/package/g2-kit" target="_blank" rel="noopener">npm</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      </section>
     </div>
   </main>
 
-  <script src="/assets/home-terminal.js" defer></script>
-
-  <footer class="term-footer">
+  <footer class="site-foot">
     <div class="wrap">
-      <div class="left">
-        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
-        <span>echo "&copy; 2026 RAZKOM"</span>
-      </div>
-      <div class="right">
-        <a href="/">razkom.com</a>
-        <span class="sep">//</span>
-        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github</a>
-      </div>
+      <img src="/assets/avatar.svg" alt="" width="22" height="22" />
+      <span>&copy; 2026 RAZKOM</span>
+      <span class="right">press <kbd>`</kbd> for the shell</span>
     </div>
   </footer>
 </body>

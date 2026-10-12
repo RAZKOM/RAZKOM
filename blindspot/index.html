@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0d1117" />
-  <title>BlindSpot. — redaction overlays for Windows · RAZKOM</title>
+  <meta name="theme-color" content="#0c0c0e" />
+  <title>BlindSpot — redaction overlays for Windows · RAZKOM</title>
   <meta name="description" content="BlindSpot draws redaction boxes on top of any window. They follow the window as it moves and resizes. Free and open source." />
-  <link rel="icon" type="image/png" href="/assets/brands/blindspot.png" />
+  <link rel="icon" href="/assets/brands/blindspot.png" />
   <link rel="canonical" href="https://razkom.com/blindspot/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="BlindSpot — redaction overlays for Windows" />
-  <meta property="og:description" content="Draw boxes over anything on screen. They track the window as it moves and resizes." />
+  <meta property="og:description" content="Redaction boxes that stick to windows. Screen share without the panic." />
   <meta property="og:url" content="https://razkom.com/blindspot/" />
   <meta property="og:image" content="https://razkom.com/assets/og/blindspot.png" />
   <meta property="og:image:width" content="1200" />
@@ -21,179 +21,99 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="/assets/site.js" defer></script>
 </head>
-<body class="theme-blindspot">
-  <header class="term-nav">
+<body>
+  <header class="site-head">
     <div class="wrap">
-      <div class="term-nav-left">
-        <a href="/" class="term-brand" aria-label="RAZKOM home">
-          RAZKOM<span class="slash">/</span><span class="path">blindspot</span>
-        </a>
-      </div>
-      <nav class="term-nav-links" aria-label="Primary">
-        <a href="https://github.com/RAZKOM" target="_blank" rel="noopener">github &#8599;</a>
+      <a class="brand" href="/" aria-label="RAZKOM home"><img src="/assets/avatar.svg" alt="" width="28" height="28" />RAZKOM<span class="path">/<b>blindspot</b></span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#authforge">authforge</a>
+        <a href="/#apps">apps</a>
+        <a href="/#packages">packages</a>
+        <button type="button" class="shell-btn" id="open-shell" aria-label="Open the RAZKOM shell"><kbd>`</kbd><span class="label">shell</span></button>
+        <a class="gh-link keep" href="https://github.com/RAZKOM" target="_blank" rel="noopener" aria-label="RAZKOM on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="app-hero app-hero--stack">
-      <div class="wrap">
-        <div class="hero-copy">
-          <p class="kicker">$ ./blindspot --info</p>
-          <div class="app-hero-title-row">
-            <img class="app-hero-mark" src="/assets/brands/blindspot.png" width="288" height="288" alt="" decoding="async" />
-            <h1 class="app-title">BlindSpot<span class="punct">.</span></h1>
-          </div>
-          <p class="app-subhead">Draw redaction boxes on top of any window. They stick to that window and follow it as you move, resize, or snap. Made for screen sharing without the panic.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary"
-               href="https://github.com/RAZKOM/blindspot/releases/latest"
-               target="_blank" rel="noopener">
-              Download for Windows
-              <span class="arrow">&rarr;</span>
-            </a>
-            <a class="btn"
-               href="https://github.com/RAZKOM/blindspot"
-               target="_blank" rel="noopener">
-              View source
-            </a>
-            <span class="cta-note">Windows 10 / 11</span>
-          </div>
-        </div>
-
-        <figure class="hero-mock hero-demo">
-          <video
-            src="/assets/blindspot-demo-compressed.mp4"
-            width="1920"
-            height="1080"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            aria-label="Screen recording: draw redaction boxes over sensitive parts of a window; the boxes stay aligned as the window moves and resizes."></video>
-        </figure>
+  <main class="layout">
+    <aside class="side">
+      <img class="side-icon" src="/assets/brands/blindspot.png" alt="" width="88" height="88" />
+      <h1 class="side-name">BlindSpot</h1>
+      <p class="side-tag">free &middot; mit</p>
+      <p class="side-bio">Redaction boxes that stick to a window as it moves and resizes.</p>
+      <div class="side-actions">
+        <a class="btn btn-red" href="https://github.com/RAZKOM/blindspot/releases/latest" target="_blank" rel="noopener">Download for Windows <span class="arrow">&darr;</span></a>
+        <a class="btn" href="https://github.com/RAZKOM/blindspot" target="_blank" rel="noopener">View source</a>
       </div>
-    </section>
-    <section class="section">
-      <div class="wrap">
-        <header class="sect-head">
-          <span class="sect-num">[01]</span>
-          <span class="sect-title">how it works</span>
-          <span class="sect-meta">// three steps</span>
-        </header>
+      <p class="side-note">Windows 10 / 11. Unzip and run, no installer.</p>
+      <ul class="side-links">
+        <li><a href="https://github.com/RAZKOM/blindspot" target="_blank" rel="noopener">source on github</a></li>
+        <li><a href="https://github.com/RAZKOM/blindspot/releases" target="_blank" rel="noopener">releases</a></li>
+      </ul>
+      <div class="chips"><span class="chip">windows</span><span class="chip">rust</span><span class="chip">win32</span><span class="chip">privacy</span></div>
+      <div class="side-langs">
+        <div class="langbar" aria-hidden="true"><span style="width:100.0%;background:#dea584"></span></div>
+        <ul class="langs"><li><i class="lang-dot" style="background:#dea584"></i><b>Rust</b> 100.0%</li></ul>
+      </div>
+    </aside>
 
+    <div class="content">
+      <p class="lead">Screen share without the panic.</p>
+      <p class="lead-sub">Draw redaction boxes on top of any window. They stick to that window and follow it as you move, resize, or snap it.</p>
+      <div class="media">
+        <video src="/assets/blindspot-demo-compressed.mp4" width="1920" height="1080" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording: draw redaction boxes over sensitive parts of a window; the boxes stay aligned as the window moves and resizes."></video>
+      </div>
+
+      <section class="block">
+        <h2 class="block-label"><span class="n">01</span>how it works</h2>
         <div class="prose">
           <ol>
-            <li>Press <span class="kbd">Ctrl</span> + <span class="kbd">Win</span> + <span class="kbd">R</span> to enter draw mode.</li>
+            <li>Press <kbd>Ctrl</kbd> + <kbd>Win</kbd> + <kbd>R</kbd> to enter draw mode.</li>
             <li>Click the window you want to cover, then drag a box over the part you want hidden.</li>
-            <li>Press <span class="kbd">Esc</span>. The box is locked to that window. Move it, resize it, snap it. The redaction follows.</li>
+            <li>Press <kbd>Esc</kbd>. The box is locked to that window. Move it, resize it, snap it: the redaction follows.</li>
           </ol>
-          <p>To edit later: press the hotkey again, click a box. Drag to move, drag corners to resize, click the center X to remove it. To clear every box at once: <span class="kbd">Ctrl</span> + <span class="kbd">Win</span> + <span class="kbd">Shift</span> + <span class="kbd">R</span>.</p>
+          <p>To edit later, press the hotkey again and click a box. Drag to move, drag corners to resize, click the center X to remove it. Clear every box at once with <kbd>Ctrl</kbd> + <kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd>.</p>
         </div>
-      </div>
-    </section>
-    <section class="section" style="padding-top: 0;">
-      <div class="wrap">
-        <header class="sect-head">
-          <span class="sect-num">[02]</span>
-          <span class="sect-title">features</span>
-          <span class="sect-meta">// v1, windows</span>
-        </header>
+      </section>
 
-        <div class="features">
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="17" cy="14" r="2"/></svg>
-            </span>
-            <h3>Window-anchored</h3>
-            <p>Boxes attach to a specific window and ride along when it moves, resizes, snaps, or minimizes.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8V4h4"/><path d="M20 8V4h-4"/><path d="M4 16v4h4"/><path d="M20 16v4h-4"/></svg>
-            </span>
-            <h3>Smart corner anchoring</h3>
-            <p>When a window resizes, redactions stay where they should. Hide a sidebar, the box does not slide off it.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            </span>
-            <h3>Three fill styles</h3>
-            <p>Solid color, animated noise / static, or a custom image. Pick what blends in best for the call you are on.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"/><path d="M18 6h2"/><circle cx="16" cy="6" r="2"/><path d="M4 12h2"/><path d="M10 12h10"/><circle cx="8" cy="12" r="2"/><path d="M4 18h12"/><path d="M20 18h0"/><circle cx="18" cy="18" r="2"/></svg>
-            </span>
-            <h3>Configurable</h3>
-            <p>Custom hotkeys and redaction style. Optional run-on-startup. Lives in the system tray, no taskbar entry.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            </span>
-            <h3>Quiet</h3>
-            <p>Near zero CPU until you actually press the hotkey. It is happy doing nothing in the background.</p>
-          </div>
-
-          <div class="feature">
-            <span class="icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6 8v4a4 4 0 0 0 4 4h4a4 4 0 0 0 4-4V8"/></svg>
-            </span>
-            <h3>Free, open source</h3>
-            <p>MIT license. Read the source, build it yourself, fork it. No telemetry, no nag screens, no account.</p>
-          </div>
-
+      <section class="block">
+        <h2 class="block-label"><span class="n">02</span>features</h2>
+        <div class="feats">
+          <div class="feat"><b>Window-anchored</b><span>Boxes ride along when the window moves, resizes, snaps, or minimizes.</span></div>
+          <div class="feat"><b>Smart corner anchoring</b><span>Hide a sidebar and the box doesn't slide off it.</span></div>
+          <div class="feat"><b>Three fill styles</b><span>Solid color, animated noise, or a custom image.</span></div>
+          <div class="feat"><b>Configurable</b><span>Custom hotkeys and style, optional run-on-startup, lives in the tray.</span></div>
+          <div class="feat"><b>Quiet</b><span>Near zero CPU until you actually press the hotkey.</span></div>
+          <div class="feat"><b>Free and open source</b><span>MIT. No telemetry, no nag screens, no account.</span></div>
         </div>
-      </div>
-    </section>
-    <section class="section" style="padding-top: 0;">
-      <div class="wrap">
-        <header class="sect-head">
-          <span class="sect-num">[03]</span>
-          <span class="sect-title">spec sheet</span>
-          <span class="sect-meta">// the details</span>
-        </header>
+      </section>
 
-        <div class="spec-card">
-          <dl>
-            <div class="spec-row"><dt>platform</dt><span class="leader"></span><dd>Windows 10 and 11, x64</dd></div>
-            <div class="spec-row"><dt>size</dt><span class="leader"></span><dd>~7 MB</dd></div>
-            <div class="spec-row"><dt>stack</dt><span class="leader"></span><dd>Rust, native Win32</dd></div>
-            <div class="spec-row"><dt>install</dt><span class="leader"></span><dd>Unzip and run</dd></div>
-            <div class="spec-row"><dt>license</dt><span class="leader"></span><dd>MIT</dd></div>
-            <div class="spec-row"><dt>source</dt><span class="leader"></span><dd>github.com/RAZKOM/blindspot</dd></div>
-            <div class="spec-row"><dt>telemetry</dt><span class="leader"></span><dd>None</dd></div>
-            <div class="spec-row"><dt>cost</dt><span class="leader"></span><dd>Free</dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
-
+      <section class="block">
+        <h2 class="block-label"><span class="n">03</span>spec</h2>
+        <table class="spec"><tbody>
+          <tr><td>platform</td><td>Windows 10 and 11, x64</td></tr>
+          <tr><td>size</td><td>~7 MB</td></tr>
+          <tr><td>stack</td><td>Rust, native Win32</td></tr>
+          <tr><td>install</td><td>Unzip and run</td></tr>
+          <tr><td>license</td><td>MIT</td></tr>
+          <tr><td>telemetry</td><td>None</td></tr>
+          <tr><td>cost</td><td>Free</td></tr>
+        </tbody></table>
+      </section>
+    </div>
   </main>
 
-  <footer class="term-footer">
+  <footer class="site-foot">
     <div class="wrap">
-      <div class="left">
-        <span class="prompt">user@razkom:<span class="tilde">~</span><span class="dollar">$</span></span>
-        <span>echo "&copy; 2026 RAZKOM"</span>
-      </div>
-      <div class="right">
-        <a href="/">razkom.com</a>
-        <span class="sep">//</span>
-        <a href="https://github.com/RAZKOM/blindspot" target="_blank" rel="noopener">github.com/RAZKOM/blindspot</a>
-      </div>
+      <img src="/assets/avatar.svg" alt="" width="22" height="22" />
+      <span>&copy; 2026 RAZKOM</span>
+      <a href="/">razkom.com</a>
+      <a href="mailto:hello@razkom.com">hello@razkom.com</a>
+      <span class="right">press <kbd>`</kbd> for the shell</span>
     </div>
   </footer>
 </body>
