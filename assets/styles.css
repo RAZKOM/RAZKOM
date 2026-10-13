@@ -161,6 +161,7 @@ kbd {
 }
 
 .side { position: sticky; top: 100px; align-self: start; }
+.no-head .side { top: 48px; }
 .side-avatar { width: 100%; height: auto; aspect-ratio: 1; border-radius: 22px; }
 .side-name { margin: 20px 0 4px; font: 700 22px var(--mono); letter-spacing: .05em; }
 .side-tag { font: 500 12.5px var(--mono); color: var(--red); margin: 0 0 14px; }
@@ -176,6 +177,7 @@ kbd {
 .lead-sub { color: var(--ink-2); margin: 0; }
 
 .block { margin-top: 52px; scroll-margin-top: 84px; }
+.no-head .block { scroll-margin-top: 24px; }
 .block-label {
   display: flex;
   align-items: center;

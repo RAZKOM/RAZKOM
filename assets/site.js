@@ -18,7 +18,7 @@
 
   var FILES = {
     'manifesto.txt': [
-      'Small tools. Native binaries. One thing well.',
+      'I make small apps for Windows and the web.',
       'Some free, some paid. Never subscriptions.',
       "If it helps you, that's the goal.",
     ].join('\n'),
@@ -35,10 +35,8 @@
 
   // ─── Shell palette ──────────────────────────────────────
 
-  var trigger = document.getElementById('open-shell');
-  if (trigger) {
-    initShell(trigger);
-  }
+  // The trigger button is optional: pages without a header still get the ` shortcut.
+  initShell(document.getElementById('open-shell'));
 
   function initShell(trigger) {
     var scrim = document.createElement('div');
@@ -69,10 +67,10 @@
 
     function close() {
       scrim.classList.remove('open');
-      trigger.focus();
+      if (trigger) trigger.focus();
     }
 
-    trigger.addEventListener('click', open);
+    if (trigger) trigger.addEventListener('click', open);
     scrim.addEventListener('mousedown', function (e) {
       if (e.target === scrim) close();
     });
