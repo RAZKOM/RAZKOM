@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c0c0e" />
+  <title>hem — a terminal log viewer that finds what went wrong · RAZKOM</title>
+  <meta name="description" content="hem (Human-readable Event Monitor) is a fast, mouse-aware terminal log viewer. Severity timeline, repeat collapsing, next error, rare-line templates and filters, instant on multi-gigabyte files. Free and open source." />
+  <link rel="icon" type="image/svg+xml" href="/assets/brands/hem.svg" />
+  <link rel="canonical" href="https://razkom.com/hem/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="hem — tail, but tailored" />
+  <meta property="og:description" content="A terminal log viewer that shows where things went wrong. Instant on multi-gigabyte files." />
+  <meta property="og:url" content="https://razkom.com/hem/" />
+  <meta property="og:image" content="https://razkom.com/assets/og/hem.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://razkom.com/assets/og/hem.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="RAZKOM home"><img src="/assets/avatar.svg" alt="" width="28" height="28" />RAZKOM<span class="path">/<b>hem</b></span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#authforge">authforge</a>
+        <a href="/#apps">apps</a>
+        <a href="/#packages">packages</a>
+        <button type="button" class="shell-btn" id="open-shell" aria-label="Open the RAZKOM shell"><kbd>`</kbd><span class="label">shell</span></button>
+        <a class="gh-link keep" href="https://github.com/RAZKOM" target="_blank" rel="noopener" aria-label="RAZKOM on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="side">
+      <img class="side-icon" src="/assets/brands/hem.svg" alt="" width="88" height="88" />
+      <h1 class="side-name">hem</h1>
+      <p class="side-tag">free &middot; mit / apache-2.0</p>
+      <p class="side-bio">Human-readable Event Monitor. A terminal log viewer that shows where things went wrong, not just the last lines.</p>
+      <div class="side-actions">
+        <a class="btn btn-red" href="#install">Install <span class="arrow">&darr;</span></a>
+        <a class="btn" href="https://github.com/RAZKOM/hem" target="_blank" rel="noopener">View source</a>
+      </div>
+      <p class="side-note">Windows, macOS and Linux, x64 and ARM64. One binary.</p>
+      <ul class="side-links">
+        <li><a href="https://github.com/RAZKOM/hem" target="_blank" rel="noopener">source on github</a></li>
+        <li><a href="https://github.com/RAZKOM/hem/releases" target="_blank" rel="noopener">releases</a></li>
+        <li><a href="https://crates.io/crates/hem" target="_blank" rel="noopener">crates.io</a></li>
+      </ul>
+      <div class="chips"><span class="chip">terminal</span><span class="chip">rust</span><span class="chip">ratatui</span><span class="chip">logs</span></div>
+      <div class="side-langs">
+        <div class="langbar" aria-hidden="true"><span style="width:100.0%;background:#dea584"></span></div>
+        <ul class="langs"><li><i class="lang-dot" style="background:#dea584"></i><b>Rust</b> 100.0%</li></ul>
+      </div>
+    </aside>
+
+    <div class="content">
+      <p class="lead">tail, but tailored.</p>
+      <p class="lead-sub"><code>hem app.log</code> opens a full-screen, mouse-aware log viewer that makes it obvious where things went wrong. It stays instant on multi-gigabyte files and never gets in the way of the program writing them.</p>
+      <div class="media">
+        <video src="/assets/hem-demo-compressed.mp4" width="1280" height="760" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording: hem opens a log, jumps between errors, searches for timeout, hides everything below WARN, opens a line's details, lists the rarest log templates and opens the command palette."></video>
+      </div>
+
+      <section class="block" id="install">
+        <h2 class="block-label"><span class="n">01</span>install</h2>
+        <div class="install">
+          <div class="install-row"><span>cargo</span><div class="cmd"><code>cargo install hem</code><button type="button" class="copy" data-copy="cargo install hem">copy</button></div></div>
+          <div class="install-row"><span>cargo-binstall</span><div class="cmd"><code>cargo binstall hem</code><button type="button" class="copy" data-copy="cargo binstall hem">copy</button></div></div>
+          <div class="install-row"><span>macOS / Linux</span><div class="cmd"><code>curl --proto '=https' --tlsv1.2 -LsSf https://github.com/RAZKOM/hem/releases/latest/download/hem-installer.sh | sh</code><button type="button" class="copy" data-copy="curl --proto '=https' --tlsv1.2 -LsSf https://github.com/RAZKOM/hem/releases/latest/download/hem-installer.sh | sh">copy</button></div></div>
+          <div class="install-row"><span>Windows</span><div class="cmd"><code>powershell -ExecutionPolicy Bypass -c "irm https://github.com/RAZKOM/hem/releases/latest/download/hem-installer.ps1 | iex"</code><button type="button" class="copy" data-copy="powershell -ExecutionPolicy Bypass -c &quot;irm https://github.com/RAZKOM/hem/releases/latest/download/hem-installer.ps1 | iex&quot;">copy</button></div></div>
+        </div>
+        <p class="after-note">Or grab a prebuilt archive from <a href="https://github.com/RAZKOM/hem/releases" target="_blank" rel="noopener">GitHub Releases</a>. Inside the viewer, press <kbd>?</kbd> for help and <kbd>:</kbd> for the command palette.</p>
+      </section>
+
+      <section class="block">
+        <h2 class="block-label"><span class="n">02</span>what it does</h2>
+        <div class="feats">
+          <div class="feat"><b>Instant on huge files</b><span>Indexed in the background: a 5 GB log is scrollable in ~20 ms and fully indexed in a few seconds.</span></div>
+          <div class="feat"><b>Answers "what happened?"</b><span>A timeline minimap coloured by severity, next / previous error, and repeats collapsed with counts and sparklines.</span></div>
+          <div class="feat"><b>Rare lines first</b><span>The templates view groups lines by shape, so the one odd message stands out from a million routine ones.</span></div>
+          <div class="feat"><b>Filters that compose</b><span>Regex include and exclude, minimum level, time range and field predicates like <code>status&gt;=500</code>, as clickable chips.</span></div>
+          <div class="feat"><b>Out of the writer's way</b><span>Files are read without memory-mapping, so the app writing the log can still rotate, truncate or delete it. On Windows too.</span></div>
+          <div class="feat"><b>A proper Unix tool</b><span>Files, globs, stdin and <code>.gz</code>; merge sources by timestamp; plain coloured output when piped.</span></div>
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="block-label"><span class="n">03</span>usage</h2>
+<pre class="code"><span class="tok-f">hem</span> app.log                         <span class="tok-c"># open in the viewer</span>
+<span class="tok-f">hem</span> app.log nginx.log <span class="tok-k">--merge</span>       <span class="tok-c"># one stream, interleaved by timestamp</span>
+<span class="tok-f">hem</span> <span class="tok-s">'logs/*.log'</span>                    <span class="tok-c"># globs are expanded by hem</span>
+cat app.log | <span class="tok-f">hem</span>                   <span class="tok-c"># stdin</span>
+<span class="tok-f">hem</span> app.log <span class="tok-k">-f</span>                      <span class="tok-c"># follow, survives rotation</span>
+<span class="tok-f">hem</span> app.log <span class="tok-k">--since</span> 15m <span class="tok-k">--level</span> warn <span class="tok-k">--filter</span> timeout
+<span class="tok-f">hem</span> app.log <span class="tok-k">--level</span> error <span class="tok-k">--plain</span> | wc -l
+<span class="tok-f">hem</span> templates app.log <span class="tok-k">-n</span> 20 <span class="tok-k">--rare</span>  <span class="tok-c"># the 20 rarest line templates</span></pre>
+      </section>
+
+      <section class="block">
+        <h2 class="block-label"><span class="n">04</span>spec</h2>
+        <table class="spec"><tbody>
+          <tr><td>platform</td><td>Windows, macOS, Linux (x64 and ARM64)</td></tr>
+          <tr><td>formats</td><td>JSON lines, logfmt, nginx / Apache, syslog, plain; custom formats in config</td></tr>
+          <tr><td>stack</td><td>Rust + ratatui</td></tr>
+          <tr><td>install</td><td><code>cargo install hem</code> or a one-line installer</td></tr>
+          <tr><td>config</td><td>Optional TOML: themes, colours, keys, presets</td></tr>
+          <tr><td>license</td><td>MIT or Apache-2.0</td></tr>
+          <tr><td>cost</td><td>Free</td></tr>
+        </tbody></table>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <img src="/assets/avatar.svg" alt="" width="22" height="22" />
+      <span>&copy; 2026 RAZKOM</span>
+      <a href="/">razkom.com</a>
+      <a href="mailto:hello@razkom.com">hello@razkom.com</a>
+      <span class="right">press <kbd>`</kbd> for the shell</span>
+    </div>
+  </footer>
+</body>
+</html>
