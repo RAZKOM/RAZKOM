@@ -8,6 +8,7 @@
 
   var APPS = {
     tapt: '/tapt/',
+    hem: '/hem/',
     authforge: AUTHFORGE_URL,
     blindspot: '/blindspot/',
     filelens: '/filelens/',
@@ -18,7 +19,7 @@
 
   var FILES = {
     'manifesto.txt': [
-      'I make small apps for Windows and the web.',
+      'I make small apps for Windows, the terminal and the web.',
       'Some free, some paid. Never subscriptions.',
       "If it helps you, that's the goal.",
     ].join('\n'),

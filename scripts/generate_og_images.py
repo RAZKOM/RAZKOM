@@ -52,7 +52,7 @@ CARDS = [
         filename="home.png",
         name="RAZKOM",
         tagline="Small tools. Native binaries. One thing well.",
-        chips=[("authforge", AF), ("5 apps", INK_2), ("6 sdks", INK_2), ("g2-kit", INK_2), ("never subscriptions", RED)],
+        chips=[("authforge", AF), ("6 apps", INK_2), ("6 sdks", INK_2), ("g2-kit", INK_2), ("never subscriptions", RED)],
     ),
     Card(
         filename="tapt.png",
@@ -62,6 +62,15 @@ CARDS = [
         logo="assets/brands/tapt.png",
         tagline="See every keystroke. Live, on screen, on stream. A keyboard overlay for Windows.",
         chips=[("$2.99 once", RED), ("windows", INK_2), ("rust", INK_2), ("licensed with authforge", AF)],
+    ),
+    Card(
+        filename="hem.png",
+        name="hem",
+        path="hem",
+        accent="#f38ba8",
+        logo="assets/brands/hem.png",
+        tagline="tail, but tailored. A terminal log viewer that shows where things went wrong, instant on huge files.",
+        chips=[("free", INK_2), ("windows", INK_2), ("macos", INK_2), ("linux", INK_2), ("rust", INK_2)],
     ),
     Card(
         filename="blindspot.png",
