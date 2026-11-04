@@ -9,17 +9,20 @@
   var APPS = {
     tapt: '/tapt/',
     hem: '/hem/',
+    mdown: '/mdown/',
+    beacontap: '/beacontap/',
     authforge: AUTHFORGE_URL,
     blindspot: '/blindspot/',
     filelens: '/filelens/',
     jsdecloak: '/jsdecloak/',
     tape: '/tape/',
+    wordlens: '/wordlens/',
   };
   var APP_NAMES = Object.keys(APPS);
 
   var FILES = {
     'manifesto.txt': [
-      'I make small apps for Windows, the terminal and the web.',
+      'I make small apps for Windows, macOS, the terminal, the web and smart glasses.',
       'Some free, some paid. Never subscriptions.',
       "If it helps you, that's the goal.",
     ].join('\n'),
