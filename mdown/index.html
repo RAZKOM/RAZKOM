@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c0c0e" />
+  <title>mdown — a small, fast Markdown viewer and editor · RAZKOM</title>
+  <meta name="description" content="mdown is a native Markdown viewer and editor for Windows and macOS. Rendered reading, live-preview editing, math, Mermaid diagrams, charts, 3D models and PDF export in one ~8 MB program. Free and open source." />
+  <link rel="icon" type="image/svg+xml" href="/assets/brands/mdown.svg" />
+  <link rel="canonical" href="https://razkom.com/mdown/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="mdown — Markdown, opened properly" />
+  <meta property="og:description" content="A small, fast window for Markdown files: read, edit with a live preview, save as PDF. Not Electron." />
+  <meta property="og:url" content="https://razkom.com/mdown/" />
+  <meta property="og:image" content="https://razkom.com/assets/og/mdown.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://razkom.com/assets/og/mdown.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script src="/assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="RAZKOM home"><img src="/assets/avatar.svg" alt="" width="28" height="28" />RAZKOM<span class="path">/<b>mdown</b></span></a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/#authforge">authforge</a>
+        <a href="/#apps">apps</a>
+        <a href="/#packages">packages</a>
+        <button type="button" class="shell-btn" id="open-shell" aria-label="Open the RAZKOM shell"><kbd>`</kbd><span class="label">shell</span></button>
+        <a class="gh-link keep" href="https://github.com/RAZKOM" target="_blank" rel="noopener" aria-label="RAZKOM on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg></a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="layout">
+    <aside class="side">
+      <img class="side-icon" src="/assets/brands/mdown.svg" alt="" width="88" height="88" />
+      <h1 class="side-name">mdown</h1>
+      <p class="side-tag">free &middot; mit</p>
+      <p class="side-bio">A small, fast window for Markdown files. Read it rendered, edit it with a live preview, save it as a PDF.</p>
+      <div class="side-actions">
+        <a class="btn btn-red" href="#install">Install <span class="arrow">&darr;</span></a>
+        <a class="btn" href="https://github.com/RAZKOM/mdown" target="_blank" rel="noopener">View source</a>
+      </div>
+      <p class="side-note">Windows 10 / 11 and macOS 11+. One ~8 MB program, no Electron.</p>
+      <ul class="side-links">
+        <li><a href="https://github.com/RAZKOM/mdown" target="_blank" rel="noopener">source on github</a></li>
+        <li><a href="https://github.com/RAZKOM/mdown/releases" target="_blank" rel="noopener">releases</a></li>
+        <li><a href="https://crates.io/crates/mdown" target="_blank" rel="noopener">crates.io</a></li>
+      </ul>
+      <div class="chips"><span class="chip">windows</span><span class="chip">macos</span><span class="chip">rust</span><span class="chip">markdown</span></div>
+      <div class="side-langs">
+        <div class="langbar" aria-hidden="true"><span style="width:48.4%;background:#f1e05a"></span><span style="width:43.3%;background:#dea584"></span><span style="width:8.3%;background:#663399"></span></div>
+        <ul class="langs"><li><i class="lang-dot" style="background:#f1e05a"></i><b>JavaScript</b> 48.4%</li><li><i class="lang-dot" style="background:#dea584"></i><b>Rust</b> 43.3%</li><li><i class="lang-dot" style="background:#663399"></i><b>CSS</b> 8.3%</li></ul>
+      </div>
+    </aside>
+    <div class="content">
+      <p class="lead">Markdown, opened properly.</p>
+      <p class="lead-sub"><code>mdown notes.md</code> opens the file in its own window, nicely rendered. Press <kbd>Ctrl</kbd>/<kbd>&#8984;</kbd>+<kbd>E</kbd> to edit it next to a live preview, and print it to PDF when you're done. It uses the web view your OS already has, so there's no bundled browser.</p>
+      <div class="media">
+        <img src="/assets/shots/mdown-edit.webp" width="1500" height="960" alt="mdown in edit mode: Markdown source on the left, the rendered page on the right with an equation, a flowchart and a bar chart." />
+      </div>
+
+      <section class="block" id="install">
+        <h2 class="block-label"><span class="n">01</span>install</h2>
+        <div class="install">
+          <div class="install-row"><span>cargo</span><div class="cmd"><code>cargo install mdown</code><button type="button" class="copy" data-copy="cargo install mdown">copy</button></div></div>
+          <div class="install-row"><span>cargo-binstall</span><div class="cmd"><code>cargo binstall mdown</code><button type="button" class="copy" data-copy="cargo binstall mdown">copy</button></div></div>
+          <div class="install-row"><span>file manager</span><div class="cmd"><code>mdown install</code><button type="button" class="copy" data-copy="mdown install">copy</button></div></div>
+        </div>
+        <p class="after-note">Or grab a prebuilt archive from <a href="https://github.com/RAZKOM/mdown/releases" target="_blank" rel="noopener">GitHub Releases</a>. <code>mdown install</code> adds &ldquo;Open with mdown&rdquo; to the right-click menu and can make it the default for <code>.md</code> files; <code>mdown uninstall</code> takes it all out again.</p>
+      </section>
+
+      <section class="block">
+        <h2 class="block-label"><span class="n">02</span>what it renders</h2>
+        <div class="feats">
+          <div class="feat"><b>GitHub-flavoured Markdown</b><span>Tables, task lists, footnotes, heading anchors, alerts like <code>[!NOTE]</code>, and sanitised inline HTML.</span></div>
+          <div class="feat"><b>Math</b><span><code>$inline$</code> and <code>$$display$$</code> equations with KaTeX.</span></div>
+          <div class="feat"><b>Diagrams and charts</b><span>Mermaid fences, and <code>chart</code> fences that take a Chart.js config as JSON.</span></div>
+          <div class="feat"><b>3D models</b><span><code>.glb</code>, <code>.gltf</code> and <code>.stl</code> files embedded like images, with drag to orbit and scroll to zoom.</span></div>
+          <div class="feat"><b>Code</b><span>Syntax highlighting for 28 languages, loaded only when a document uses them.</span></div>
+          <div class="feat"><b>Always current</b><span>The view reloads when the file changes on disk, and asks first if you have unsaved edits.</span></div>
+        </div>
+        <div class="shots">
+          <img src="/assets/shots/mdown-light.webp" width="1000" height="1075" alt="A document with math, a diagram and a chart in mdown's light theme." loading="lazy" />
+          <img src="/assets/shots/mdown-dark.webp" width="1000" height="1075" alt="The same document in the dark theme." loading="lazy" />
+        </div>
+      </section>
+
+      <section class="block">
+        <h2 class="block-label"><span class="n">03</span>usage</h2>
+<pre class="code"><span class="tok-f">mdown</span> notes.md                <span class="tok-c"># open a file</span>
+<span class="tok-f">mdown</span> a.md b.md c.md          <span class="tok-c"># one window each</span>
+<span class="tok-f">mdown</span> theme dark              <span class="tok-c"># system, light or dark</span>
+<span class="tok-f">mdown</span> install <span class="tok-k">--all --yes</span>     <span class="tok-c"># right-click entry + default app</span>
+
+<span class="tok-c"># in the window</span>
+Ctrl/&#8984;+E        edit with live preview
+Ctrl/&#8984;+F        find in page
+Ctrl/&#8984;+Shift+O  contents panel
+Ctrl/&#8984;+P        print or save as PDF</pre>
+      </section>
+
+      <section class="block">
+        <h2 class="block-label"><span class="n">04</span>spec</h2>
+        <table class="spec"><tbody>
+          <tr><td>platform</td><td>Windows 10 / 11 (WebView2), macOS 11+ (WKWebView)</td></tr>
+          <tr><td>size</td><td>~8 MB, no bundled browser</td></tr>
+          <tr><td>stack</td><td>Rust + tao / wry, CodeMirror editor</td></tr>
+          <tr><td>install</td><td><code>cargo install mdown</code> or a prebuilt archive</td></tr>
+          <tr><td>settings</td><td>Theme, text size and page width, shared by every window</td></tr>
+          <tr><td>license</td><td>MIT</td></tr>
+          <tr><td>cost</td><td>Free</td></tr>
+        </tbody></table>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <img src="/assets/avatar.svg" alt="" width="22" height="22" />
+      <span>&copy; 2026 RAZKOM</span>
+      <a href="/">razkom.com</a>
+      <a href="mailto:hello@razkom.com">hello@razkom.com</a>
+      <span class="right">press <kbd>`</kbd> for the shell</span>
+    </div>
+  </footer>
+</body>
+</html>

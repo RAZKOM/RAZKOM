@@ -52,7 +52,7 @@ CARDS = [
         filename="home.png",
         name="RAZKOM",
         tagline="Small tools. Native binaries. One thing well.",
-        chips=[("authforge", AF), ("6 apps", INK_2), ("6 sdks", INK_2), ("g2-kit", INK_2), ("never subscriptions", RED)],
+        chips=[("authforge", AF), ("9 apps", INK_2), ("6 sdks", INK_2), ("g2-kit", INK_2), ("never subscriptions", RED)],
     ),
     Card(
         filename="tapt.png",
@@ -71,6 +71,24 @@ CARDS = [
         logo="assets/brands/hem.png",
         tagline="tail, but tailored. A terminal log viewer that shows where things went wrong, instant on huge files.",
         chips=[("free", INK_2), ("windows", INK_2), ("macos", INK_2), ("linux", INK_2), ("rust", INK_2)],
+    ),
+    Card(
+        filename="mdown.png",
+        name="mdown",
+        path="mdown",
+        accent="#5b7cf0",
+        logo="assets/brands/mdown.png",
+        tagline="A small, fast window for Markdown files. Read it, edit it with a live preview, save it as a PDF.",
+        chips=[("free", INK_2), ("windows", INK_2), ("macos", INK_2), ("rust", INK_2), ("mit", INK_2)],
+    ),
+    Card(
+        filename="beacontap.png",
+        name="BeaconTap",
+        path="beacontap",
+        accent="#3db4e6",
+        logo="assets/brands/beacontap.png",
+        tagline="See what a program talks to on the network. Follows one process tree, not the whole machine.",
+        chips=[("free", INK_2), ("windows", INK_2), ("rust", INK_2), ("mit", INK_2)],
     ),
     Card(
         filename="blindspot.png",
@@ -107,6 +125,15 @@ CARDS = [
         logo="assets/brands/tape.png",
         tagline="Pin timestamped notes to a waveform and share the review as a link. Audio stays on your device.",
         chips=[("free", INK_2), ("web", INK_2), ("mit", INK_2)],
+    ),
+    Card(
+        filename="wordlens.png",
+        name="WordLens",
+        path="wordlens",
+        accent="#39e75f",
+        logo="assets/brands/wordlens.png",
+        tagline="Five-letter word guessing on Even Realities G2 glasses. Say your guess; speech stays on your phone.",
+        chips=[("free", INK_2), ("even g2", INK_2), ("typescript", INK_2)],
     ),
 ]
 
